@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fase 1: Pendataan & Registrasi - Sistem Bansos Siswa Aceh</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-color: #4a6fa5;
+            --secondary-color: #166088;
+            --accent-color: #ffcc00;
+            --success-color: #28a745;
+            --warning-color: #ffc107;
+            --danger-color: #dc3545;
+            --info-color: #17a2b8;
+            --light-color: #f8f9fa;
+            --dark-color: #343a40;
+            --gray-color: #6c757d;
+            --border-radius: 12px;
+            --box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f0f7ff 0%, #e6f2ff 100%);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Phase Header */
+        .phase-header {
+            background: linear-gradient(135deg, var(--primary-color), #3a5a8a);
+            color: white;
+            padding: 2.5rem;
+            border-radius: var(--border-radius);
+            margin-bottom: 40px;
+            box-shadow: var(--box-shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .phase-header::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+
+        .phase-header::after {
+            content: '';
+            position: absolute;
+            bottom: -30px;
+            left: -30px;
+            width: 150px;
+            height: 150px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 50%;
+        }
+
+        .phase-title-container {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .phase-number {
+            background-color: rgba(255, 255, 255, 0.2);
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: bold;
+            border: 4px solid white;
+        }
+
+        .phase-title-content h1 {
+            font-size: 2.4rem;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .phase-title-content p {
+            opacity: 0.95;
+            font-size: 1.2rem;
+            max-width: 800px;
+        }
+
+        /* Registration Process */
+        .registration-process {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: var(--box-shadow);
+        }
+
+        .process-title {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .process-title i {
+            background: var(--primary-color);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .process-step {
+            background: #f8f9fa;
+            border-radius: var(--border-radius);
+            padding: 30px;
+            transition: var(--transition);
+            border-left: 5px solid var(--primary-color);
+            height: 100%;
+            position: relative;
+        }
+
+        .process-step:hover {
+            background: white;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .step-number {
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            width: 40px;
+            height: 40px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .step-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .step-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--dark-color);
+            text-align: center;
+        }
+
+        .step-description {
+            color: var(--gray-color);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .step-duration {
+            padding: 8px 15px;
+            background: rgba(74, 111, 165, 0.1);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: var(--primary-color);
+            display: inline-block;
+            font-weight: 500;
+        }
+
+        /* Registration Form */
+        .registration-form-container {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: var(--box-shadow);
+        }
+
+        .form-title {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .form-progress {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .progress-step {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            flex: 1;
+        }
+
+        .progress-step::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            right: -50%;
+            height: 4px;
+            background: #e9ecef;
+            z-index: 1;
+        }
+
+        .progress-step:last-child::before {
+            display: none;
+        }
+
+        .progress-circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: white;
+            border: 3px solid #e9ecef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 10px;
+            font-weight: bold;
+            color: var(--gray-color);
+            position: relative;
+            z-index: 2;
+            transition: var(--transition);
+        }
+
+        .progress-step.active .progress-circle {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .progress-step.completed .progress-circle {
+            background: var(--success-color);
+            border-color: var(--success-color);
+            color: white;
+        }
+
+        .progress-label {
+            font-size: 0.9rem;
+            color: var(--gray-color);
+            font-weight: 500;
+        }
+
+        .progress-step.active .progress-label {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        /* Form Sections */
+        .form-section {
+            margin-bottom: 50px;
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: var(--border-radius);
+            border: 2px solid #e9ecef;
+            display: none;
+        }
+
+        .form-section.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #dee2e6;
+        }
+
+        .section-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .section-title h3 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .section-title p {
+            color: var(--gray-color);
+            font-size: 0.95rem;
+        }
+
+        /* Form Grid */
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+
+        label.required::after {
+            content: " *";
+            color: var(--danger-color);
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid #dee2e6;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: var(--transition);
+            background: white;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(74, 111, 165, 0.1);
+        }
+
+        input.error, select.error, textarea.error {
+            border-color: var(--danger-color);
+        }
+
+        .form-hint {
+            font-size: 0.85rem;
+            color: var(--gray-color);
+            margin-top: 8px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .form-hint i {
+            color: var(--info-color);
+        }
+
+        .error-message {
+            font-size: 0.85rem;
+            color: var(--danger-color);
+            margin-top: 5px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .file-upload {
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .file-upload-input {
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+
+        .file-upload-label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px;
+            background: #f8f9fa;
+            border: 2px dashed #dee2e6;
+            border-radius: 8px;
+            color: var(--gray-color);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .file-upload-label:hover {
+            border-color: var(--primary-color);
+            background: #e9ecef;
+        }
+
+        /* Form Navigation */
+        .form-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid #eee;
+        }
+
+        .btn {
+            padding: 14px 30px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(74, 111, 165, 0.3);
+        }
+
+        .btn-secondary {
+            background: #f8f9fa;
+            color: var(--dark-color);
+            border: 2px solid #dee2e6;
+        }
+
+        .btn-secondary:hover {
+            background: #e9ecef;
+            transform: translateY(-2px);
+        }
+
+        .btn-success {
+            background: var(--success-color);
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #218838;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+        }
+
+        /* Preview Section */
+        .preview-section {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: var(--box-shadow);
+            display: none;
+        }
+
+        .preview-section.active {
+            display: block;
+        }
+
+        .preview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .preview-card {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 25px;
+            border-left: 5px solid var(--primary-color);
+        }
+
+        .preview-title {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #dee2e6;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .preview-item {
+            margin-bottom: 15px;
+        }
+
+        .preview-label {
+            font-weight: 600;
+            color: var(--gray-color);
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        .preview-value {
+            color: var(--dark-color);
+            font-size: 1rem;
+            word-break: break-word;
+        }
+
+        /* Success Message */
+        .success-message {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 60px 40px;
+            margin-bottom: 40px;
+            box-shadow: var(--box-shadow);
+            text-align: center;
+            display: none;
+        }
+
+        .success-message.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .success-icon {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--success-color), #218838);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            color: white;
+            font-size: 3rem;
+            box-shadow: 0 8px 25px rgba(40, 167, 69, 0.3);
+        }
+
+        .success-title {
+            font-size: 2rem;
+            color: var(--success-color);
+            margin-bottom: 20px;
+        }
+
+        .success-description {
+            color: var(--gray-color);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            line-height: 1.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+            
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+            
+            .preview-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .phase-title-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+            
+            .form-navigation {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .progress-step::before {
+                display: none;
+            }
+            
+            .progress-step {
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Phase Header -->
+        <div class="phase-header">
+            <div class="phase-title-container">
+                <div class="phase-number">1</div>
+                <div class="phase-title-content">
+                    <h1>Fase 1: Pendataan & Registrasi</h1>
+                    <p>Formulir pendataan lengkap untuk orang tua siswa mengisi data siswa dan data pribadi sesuai persyaratan pembukaan rekening Bank Aceh</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Registration Process -->
+        <div class="registration-process">
+            <div class="process-title">
+                <i class="fas fa-project-diagram"></i>
+                Alur Proses Registrasi
+            </div>
+            
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <div class="step-icon">
+                        <i class="fas fa-user-plus"></i>
+                    </div>
+                    <div class="step-title">Pendaftaran Akun</div>
+                    <div class="step-description">
+                        Orang tua membuat akun dengan email dan nomor telepon yang valid untuk menerima OTP dan notifikasi.
+                    </div>
+                    <div class="step-duration">
+                        <i class="fas fa-clock"></i> 5 Menit
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <div class="step-icon">
+                        <i class="fas fa-edit"></i>
+                    </div>
+                    <div class="step-title">Pengisian Data Siswa</div>
+                    <div class="step-description">
+                        Mengisi data lengkap siswa sesuai dengan dokumen resmi (Akta Kelahiran, Kartu Keluarga, NISN).
+                    </div>
+                    <div class="step-duration">
+                        <i class="fas fa-clock"></i> 10-15 Menit
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <div class="step-icon">
+                        <i class="fas fa-file-upload"></i>
+                    </div>
+                    <div class="step-title">Upload Dokumen</div>
+                    <div class="step-description">
+                        Mengunggah dokumen pendukung dalam format JPG/PDF maksimal 2MB per file.
+                    </div>
+                    <div class="step-duration">
+                        <i class="fas fa-clock"></i> 5 Menit
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <div class="step-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="step-title">Submit & Verifikasi</div>
+                    <div class="step-description">
+                        Submit data untuk diverifikasi oleh sekolah dan dinas pendidikan. Status dapat dipantau melalui dashboard.
+                    </div>
+                    <div class="step-duration">
+                        <i class="fas fa-clock"></i> 1-3 Hari Kerja
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Registration Form -->
+        <div class="registration-form-container">
+            <div class="form-title">
+                <i class="fas fa-file-signature"></i>
+                Formulir Pendataan Bansos Siswa Aceh
+            </div>
+
+            <!-- Progress Steps -->
+            <div class="form-progress">
+                <div class="progress-step active" id="progress1">
+                    <div class="progress-circle">1</div>
+                    <div class="progress-label">Data Siswa</div>
+                </div>
+                <div class="progress-step" id="progress2">
+                    <div class="progress-circle">2</div>
+                    <div class="progress-label">Data Orang Tua</div>
+                </div>
+                <div class="progress-step" id="progress3">
+                    <div class="progress-circle">3</div>
+                    <div class="progress-label">Data Sekolah</div>
+                </div>
+                <div class="progress-step" id="progress4">
+                    <div class="progress-circle">4</div>
+                    <div class="progress-label">Dokumen</div>
+                </div>
+                <div class="progress-step" id="progress5">
+                    <div class="progress-circle">5</div>
+                    <div class="progress-label">Preview</div>
+                </div>
+            </div>
+
+            <!-- Form Sections -->
+            <form id="registrationForm">
+                <!-- Section 1: Data Siswa -->
+                <div class="form-section active" id="section1">
+                    <div class="section-header">
+                        <div class="section-icon">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                        <div class="section-title">
+                            <h3>Data Pribadi Siswa</h3>
+                            <p>Isi data lengkap siswa sesuai dengan dokumen resmi (Akta Kelahiran/Kartu Keluarga)</p>
+                        </div>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="namaLengkapAnak" class="required">Nama Lengkap Anak</label>
+                            <input type="text" id="namaLengkapAnak" placeholder="Contoh: Muhammad Ali Bin Abdullah" required>
+                            <div class="form-hint">
+                                <i class="fas fa-info-circle"></i> Isi sesuai akta kelahiran atau kartu keluarga
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="namaSingkat" class="required">Nama Singkat/Panggilan</label>
+                            <input type="text" id="namaSingkat" placeholder="Contoh: Ali" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="nik" class="required">NIK (Nomor Induk Kependudukan)</label>
+                            <input type="text" id="nik" placeholder="16 digit NIK" maxlength="16" pattern="[0-9]{16}" required>
+                            <div class="form-hint">
+                                <i class="fas fa-info-circle"></i> 16 digit dari Kartu Keluarga atau KTP
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="tempatLahir" class="required">Tempat Lahir</label>
+                            <input type="text" id="tempatLahir" placeholder="Contoh: Banda Aceh" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="tanggalLahir" class="required">Tanggal Lahir</label>
+                            <input type="date" id="tanggalLahir" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="jenisKelamin" class="required">Jenis Kelamin</label>
+                            <select id="jenisKelamin" required>
+                                <option value="">Pilih Jenis Kelamin</option>
+                                <option value="L">Laki-laki</option>
+                                <option value="P">Perempuan</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="agama" class="required">Agama</label>
+                            <select id="agama" required>
+                                <option value="">Pilih Agama</option>
+                                <option value="ISLAM">Islam</option>
+                                <option value="KRISTEN">Kristen</option>
+                                <option value="KATOLIK">Katolik</option>
+                                <option value="HINDU">Hindu</option>
+                                <option value="BUDDHA">Buddha</option>
+                                <option value="KHONGHUCU">Khonghucu</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-navigation">
+                        <div></div>
+                        <button type="button" class="btn btn-primary" onclick="nextSection(2)">
+                            Selanjutnya <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Section 2: Data Orang Tua -->
+                <div class="form-section" id="section2">
+                    <div class="section-header">
+                        <div class="section-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="section-title">
+                            <h3>Data Orang Tua/Wali</h3>
+                            <p>Data lengkap orang tua atau wali yang bertanggung jawab</p>
+                        </div>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="namaGadisIbuKandung" class="required">Nama Gadis Ibu Kandung</label>
+                            <input type="text" id="namaGadisIbuKandung" placeholder="Nama ibu sebelum menikah" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="statusPernikahan" class="required">Status Pernikahan Orang Tua</label>
+                            <select id="statusPernikahan" required>
+                                <option value="">Pilih Status</option>
+                                <option value="MENIKAH">Menikah</option>
+                                <option value="CERAI_HIDUP">Cerai Hidup</option>
+                                <option value="CERAI_MATI">Cerai Mati</option>
+                                <option value="DUDA_JANDA">Duda/Janda</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="pendidikanTerakhir" class="required">Pendidikan Terakhir Orang Tua</label>
+                            <select id="pendidikanTerakhir" required>
+                                <option value="">Pilih Pendidikan</option>
+                                <option value="TIDAK_SEKOLAH">Tidak Sekolah</option>
+                                <option value="SD">SD/Sederajat</option>
+                                <option value="SMP">SMP/Sederajat</option>
+                                <option value="SMA">SMA/Sederajat</option>
+                                <option value="D1_D2_D3">Diploma (D1/D2/D3)</option>
+                                <option value="S1">Sarjana (S1)</option>
+                                <option value="S2">Magister (S2)</option>
+                                <option value="S3">Doktor (S3)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="teleponOrangTua" class="required">Nomor Telepon Orang Tua</label>
+                            <input type="tel" id="teleponOrangTua" placeholder="08xxxxxxxxxx" pattern="08[0-9]{9,10}" required>
+                            <div class="form-hint">
+                                <i class="fas fa-info-circle"></i> Untuk OTP dan notifikasi transaksi
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="emailOrangTua" class="required">Email Orang Tua</label>
+                            <input type="email" id="emailOrangTua" placeholder="email@contoh.com" required>
+                        </div>
+                    </div>
+
+                    <div class="form-navigation">
+                        <button type="button" class="btn btn-secondary" onclick="prevSection(1)">
+                            <i class="fas fa-arrow-left"></i> Sebelumnya
+                        </button>
+                        <button type="button" class="btn btn-primary" onclick="nextSection(3)">
+                            Selanjutnya <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Section 3: Data Identitas & Sekolah -->
+                <div class="form-section" id="section3">
+                    <div class="section-header">
+                        <div class="section-icon">
+                            <i class="fas fa-passport"></i>
+                        </div>
+                        <div class="section-title">
+                            <h3>Data Identitas & Sekolah</h3>
+                            <p>Data identitas resmi dan informasi sekolah</p>
+                        </div>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="jenisIdentitas" class="required">Jenis Identitas</label>
+                            <select id="jenisIdentitas" required>
+                                <option value="">Pilih Jenis Identitas</option>
+                                <option value="KTP">KTP</option>
+                                <option value="KK">Kartu Keluarga</option>
+                                <option value="AKTA">Akta Kelahiran</option>
+                                <option value="PASPOR">Paspor</option>
+                                <option value="KIA">Kartu Identitas Anak</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="noIdentitas" class="required">Nomor Identitas</label>
+                            <input type="text" id="noIdentitas" placeholder="Nomor sesuai dokumen" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="tglBerakhirIdentitas">Tanggal Berakhir Identitas</label>
+                            <input type="date" id="tglBerakhirIdentitas">
+                            <div class="form-hint">
+                                <i class="fas fa-info-circle"></i> Kosongkan jika tidak ada masa berlaku
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="nisn" class="required">NISN (Nomor Induk Siswa Nasional)</label>
+                            <input type="text" id="nisn" placeholder="10 digit NISN" pattern="[0-9]{10}" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="sekolah" class="required">Sekolah</label>
+                            <select id="sekolah" required>
+                                <option value="">Pilih Sekolah</option>
+                                <option value="SMA_NEGERI_1_BANDA_ACEH">SMA Negeri 1 Banda Aceh</option>
+                                <option value="SMA_NEGERI_2_BANDA_ACEH">SMA Negeri 2 Banda Aceh</option>
+                                <option value="SMA_NEGERI_3_BANDA_ACEH">SMA Negeri 3 Banda Aceh</option>
+                                <option value="SMA_NEGERI_4_BANDA_ACEH">SMA Negeri 4 Banda Aceh</option>
+                                <option value="SMA_NEGERI_5_BANDA_ACEH">SMA Negeri 5 Banda Aceh</option>
+                                <option value="SMA_NEGERI_1_ACEH_BESAR">SMA Negeri 1 Aceh Besar</option>
+                                <option value="SMA_NEGERI_2_ACEH_BESAR">SMA Negeri 2 Aceh Besar</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="kelas" class="required">Kelas</label>
+                            <select id="kelas" required>
+                                <option value="">Pilih Kelas</option>
+                                <option value="10">Kelas 10</option>
+                                <option value="11">Kelas 11</option>
+                                <option value="12">Kelas 12</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="jurusan">Jurusan</label>
+                            <select id="jurusan">
+                                <option value="">Pilih Jurusan</option>
+                                <option value="IPA">IPA</option>
+                                <option value="IPS">IPS</option>
+                                <option value="BAHASA">Bahasa</option>
+                                <option value="AGAMA">Agama</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-navigation">
+                        <button type="button" class="btn btn-secondary" onclick="prevSection(2)">
+                            <i class="fas fa-arrow-left"></i> Sebelumnya
+                        </button>
+                        <button type="button" class="btn btn-primary" onclick="nextSection(4)">
+                            Selanjutnya <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Section 4: Alamat & Dokumen -->
+                <div class="form-section" id="section4">
+                    <div class="section-header">
+                        <div class="section-icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <div class="section-title">
+                            <h3>Alamat Lengkap & Dokumen</h3>
+                            <p>Alamat tempat tinggal dan upload dokumen pendukung</p>
+                        </div>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="form-group full-width">
+                            <label for="alamat" class="required">Alamat Jalan</label>
+                            <textarea id="alamat" rows="3" placeholder="Jl. Teuku Umar No. 15" required></textarea>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="rt" class="required">RT</label>
+                                <input type="text" id="rt" placeholder="001" maxlength="3" pattern="[0-9]{3}" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="rw" class="required">RW</label>
+                                <input type="text" id="rw" placeholder="002" maxlength="3" pattern="[0-9]{3}" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="kelurahan" class="required">Kelurahan/Desa</label>
+                            <input type="text" id="kelurahan" placeholder="Contoh: Peuniti" required>

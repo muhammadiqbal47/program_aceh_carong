@@ -1,0 +1,1444 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ActionLink Agen - Bank Aceh</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #1a5f3f 0%, #2d8659 100%);
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .header-logo i {
+            font-size: 2rem;
+        }
+
+        .header-status {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 0.9rem;
+        }
+
+        .header-menu {
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            background: white;
+            min-height: 100vh;
+            padding-bottom: 20px;
+        }
+
+        /* Profile Card */
+        .profile-card {
+            background: white;
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .profile-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .profile-info h2 {
+            font-size: 1.2rem;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .profile-info p {
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .profile-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #1a5f3f, #2d8659);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+        }
+
+        /* Menu Grid */
+        .menu-section {
+            padding: 20px;
+        }
+
+        .menu-title {
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .menu-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 15px 10px;
+            border-radius: 10px;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .menu-item:hover {
+            background-color: #f5f5f5;
+            transform: translateY(-5px);
+        }
+
+        .menu-icon {
+            width: 55px;
+            height: 55px;
+            background: linear-gradient(135deg, #e0e7dd, #d4dfd8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #1a5f3f;
+        }
+
+        .menu-icon.tarik {
+            background: linear-gradient(135deg, #c8e6c9, #a5d6a7);
+            color: #1b5e20;
+        }
+
+        .menu-icon.info {
+            background: linear-gradient(135deg, #bbdefb, #90caf9);
+            color: #0d47a1;
+        }
+
+        .menu-icon.transfer {
+            background: linear-gradient(135deg, #ffe0b2, #ffcc80);
+            color: #e65100;
+        }
+
+        .menu-icon.setor {
+            background: linear-gradient(135deg, #f8bbd0, #f48fb1);
+            color: #880e4f;
+        }
+
+        .menu-icon.cek {
+            background: linear-gradient(135deg, #d1c4e9, #b39ddb);
+            color: #311b92;
+        }
+
+        .menu-icon.bayar {
+            background: linear-gradient(135deg, #c5e1a5, #aed581);
+            color: #33691e;
+        }
+
+        .menu-icon.barang {
+            background: linear-gradient(135deg, #ffccbc, #ffab91);
+            color: #bf360c;
+        }
+
+        .menu-icon.lainnya {
+            background: linear-gradient(135deg, #b2dfdb, #80cbc4);
+            color: #00695c;
+        }
+
+        .menu-label {
+            font-size: 0.75rem;
+            text-align: center;
+            line-height: 1.2;
+            color: #333;
+            font-weight: 500;
+        }
+
+        /* Rekening Agen Card */
+        .rekening-section {
+            padding: 20px;
+            background: #f9f9f9;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+        }
+
+        .rekening-title {
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .rekening-card {
+            background: linear-gradient(135deg, #1a5f3f 0%, #2d8659 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .rekening-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .rekening-bank {
+            font-size: 1.1rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .rekening-status {
+            font-size: 0.8rem;
+            background: rgba(255,255,255,0.2);
+            padding: 5px 12px;
+            border-radius: 20px;
+        }
+
+        .rekening-no {
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .rekening-atas-nama {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* Info & Promo Section */
+        .info-promo-section {
+            padding: 20px;
+        }
+
+        .info-promo-title {
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .promo-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .promo-item {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .promo-item:hover {
+            background: #f5f5f5;
+            border-color: #1a5f3f;
+            box-shadow: 0 2px 8px rgba(26, 95, 63, 0.1);
+        }
+
+        .promo-content {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex: 1;
+        }
+
+        .promo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1a5f3f;
+            font-size: 1.2rem;
+        }
+
+        .promo-item.topup .promo-icon {
+            background: linear-gradient(135deg, #c8e6c9, #a5d6a7);
+        }
+
+        .promo-item.favorit .promo-icon {
+            background: linear-gradient(135deg, #ffe0b2, #ffcc80);
+        }
+
+        .promo-item.cetak .promo-icon {
+            background: linear-gradient(135deg, #bbdefb, #90caf9);
+        }
+
+        .promo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .promo-text strong {
+            font-size: 0.95rem;
+            color: #333;
+        }
+
+        .promo-text small {
+            font-size: 0.8rem;
+            color: #999;
+        }
+
+        .promo-arrow {
+            color: #1a5f3f;
+            font-size: 1.2rem;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            align-items: flex-end;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            width: 100%;
+            max-width: 500px;
+            border-radius: 20px 20px 0 0;
+            padding: 30px 20px 20px;
+            animation: slideUp 0.3s ease;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(100%);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #666;
+        }
+
+        .modal-body {
+            color: #666;
+        }
+
+        .modal-body p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .modal-body ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .modal-body li {
+            margin-bottom: 8px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                max-width: 100%;
+            }
+
+            .menu-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 12px;
+            }
+
+            .menu-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.3rem;
+            }
+
+            .menu-label {
+                font-size: 0.7rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header {
+                padding: 15px;
+            }
+
+            .header-logo {
+                font-size: 1.5rem;
+            }
+
+            .menu-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 10px;
+            }
+
+            .menu-item {
+                padding: 10px 5px;
+            }
+
+            .menu-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 1.2rem;
+            }
+
+            .menu-label {
+                font-size: 0.65rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="header-logo">
+            <i class="fas fa-link"></i>
+            <span>ActionLink</span>
+        </div>
+        <div class="header-status">
+            <span>Recharged</span>
+            <i class="fas fa-ellipsis-v header-menu"></i>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Profile Card -->
+        <div class="profile-card">
+            <div class="profile-header">
+                <div class="profile-info">
+                    <h2>Agen Bansos</h2>
+                    <p>Bank Aceh Cabang Banda Aceh</p>
+                </div>
+                <div class="profile-icon">
+                    <i class="fas fa-user-tie"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menu Section -->
+        <div class="menu-section">
+            <div class="menu-title">Menu Utama</div>
+            <div class="menu-grid">
+                <a href="#" class="menu-item" onclick="openModal('tarik')">
+                    <div class="menu-icon tarik">
+                        <i class="fas fa-money-bill"></i>
+                    </div>
+                    <div class="menu-label">Tarik<br>Tunai</div>
+                </a>
+                
+                <a href="#" class="menu-item" onclick="openModal('info')">
+                    <div class="menu-icon info">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <div class="menu-label">Informasi<br>Rekening</div>
+                </a>
+                
+                <a href="#" class="menu-item" onclick="openModal('transfer')">
+                    <div class="menu-icon transfer">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <div class="menu-label">Transfer</div>
+                </a>
+                
+                <a href="#" class="menu-item" onclick="openModal('setor')">
+                    <div class="menu-icon setor">
+                        <i class="fas fa-coins"></i>
+                    </div>
+                    <div class="menu-label">Setoran<br>Tunai</div>
+                </a>
+
+                <a href="#" class="menu-item" onclick="openModal('cek')">
+                    <div class="menu-icon cek">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <div class="menu-label">Cek<br>Saldo</div>
+                </a>
+                
+                <a href="#" class="menu-item" onclick="openModal('bayar')">
+                    <div class="menu-icon bayar">
+                        <i class="fas fa-credit-card"></i>
+                    </div>
+                    <div class="menu-label">Pembayaran</div>
+                </a>
+                
+                <a href="#" class="menu-item" onclick="openModal('barang')">
+                    <div class="menu-icon barang">
+                        <i class="fas fa-box"></i>
+                    </div>
+                    <div class="menu-label">Lihat<br>Barang</div>
+                </a>
+                
+                <a href="#" class="menu-item" onclick="openModal('lainnya')">
+                    <div class="menu-icon lainnya">
+                        <i class="fas fa-bars"></i>
+                    </div>
+                    <div class="menu-label">Lainnya</div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Rekening Agen Section -->
+        <div class="rekening-section">
+            <div class="rekening-title">Informasi Rekening Agen</div>
+            <div class="rekening-card">
+                <div class="rekening-header">
+                    <div class="rekening-bank">
+                        <i class="fas fa-university"></i>
+                        Bank Aceh
+                    </div>
+                    <div class="rekening-status">Tabungan</div>
+                </div>
+                <div class="rekening-no">010.02.29.013111.1</div>
+                <div class="rekening-atas-nama">RACHMAD PRAYOGI</div>
+            </div>
+        </div>
+
+        <!-- Info & Promo Section -->
+        <div class="info-promo-section">
+            <div class="info-promo-title">Informasi & Promo</div>
+            <div class="promo-list">
+                <a href="#" class="promo-item topup" onclick="openModal('topup')">
+                    <div class="promo-content">
+                        <div class="promo-icon">
+                            <i class="fas fa-plus-circle"></i>
+                        </div>
+                        <div class="promo-text">
+                            <strong>Topup</strong>
+                            <small>Isi saldo agen</small>
+                        </div>
+                    </div>
+                    <div class="promo-arrow">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </a>
+
+                <a href="#" class="promo-item favorit" onclick="openModal('favorit')">
+                    <div class="promo-content">
+                        <div class="promo-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="promo-text">
+                            <strong>Favorit</strong>
+                            <small>Akses cepat transaksi</small>
+                        </div>
+                    </div>
+                    <div class="promo-arrow">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </a>
+
+                <a href="#" class="promo-item cetak" onclick="openModal('cetak')">
+                    <div class="promo-content">
+                        <div class="promo-icon">
+                            <i class="fas fa-print"></i>
+                        </div>
+                        <div class="promo-text">
+                            <strong>Cetak Resi</strong>
+                            <small>Bukti transaksi</small>
+                        </div>
+                    </div>
+                    <div class="promo-arrow">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </a>
+
+                <a href="#" class="promo-item" style="background: linear-gradient(135deg, #fff9c4, #fff59d); border-color: #fbc02d;" onclick="openModal('bansos')">
+                    <div class="promo-content">
+                        <div class="promo-icon" style="background: linear-gradient(135deg, #fff59d, #fff176); color: #f57f17;">
+                            <i class="fas fa-hand-holding-heart"></i>
+                        </div>
+                        <div class="promo-text">
+                            <strong style="color: #333;">Bansos</strong>
+                            <small>Pencairan dana bansos siswa</small>
+                        </div>
+                    </div>
+                    <div class="promo-arrow" style="color: #f57f17;">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span id="modal-title">Tarik Tunai</span>
+                <button class="modal-close" onclick="closeModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body" id="modal-body">
+                <!-- Content will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const modalContents = {
+            tarik: {
+                title: 'Tarik Tunai',
+                content: `
+                    <p>Lakukan penarikan tunai melalui mesin ATM atau teller Bank Aceh.</p>
+                    <h3 style="color: #1a5f3f; margin: 20px 0 10px 0;">Prosedur Penarikan:</h3>
+                    <ul>
+                        <li>Masukkan kartu ATM</li>
+                        <li>Masukkan PIN rahasia</li>
+                        <li>Pilih menu Penarikan Tunai</li>
+                        <li>Masukkan jumlah yang ingin ditarik</li>
+                        <li>Ambil kartu dan uang Anda</li>
+                    </ul>
+                    <p><strong>Limit Harian:</strong> Sesuai kebijakan bank</p>
+                    <p><strong>Biaya Admin:</strong> Gratis untuk nasabah bansos</p>
+                `
+            },
+            info: {
+                title: 'Informasi Rekening',
+                content: `
+                    <p>Lihat detail informasi rekening agen dan siswa penerima bansos.</p>
+                    <h3 style="color: #1a5f3f; margin: 20px 0 10px 0;">Data Rekening Agen:</h3>
+                    <ul>
+                        <li><strong>Nomor Rekening:</strong> 010.02.29.013111.1</li>
+                        <li><strong>Atas Nama:</strong> RACHMAD PRAYOGI</li>
+                        <li><strong>Jenis Rekening:</strong> Tabungan</li>
+                        <li><strong>Status:</strong> Aktif</li>
+                        <li><strong>Saldo Terakhir:</strong> Rp 5.250.000</li>
+                    </ul>
+                `
+            },
+            transfer: {
+                title: 'Transfer Dana',
+                content: `
+                    <p>Lakukan transfer dana ke rekening lain dengan aman dan cepat.</p>
+                    <h3 style="color: #1a5f3f; margin: 20px 0 10px 0;">Jenis Transfer:</h3>
+                    <ul>
+                        <li><strong>Transfer Lokal:</strong> Ke rekening Bank Aceh (Gratis)</li>
+                        <li><strong>Transfer RTGS:</strong> Ke bank lain (Rp 6.500)</li>
+                        <li><strong>Transfer BI-FAST:</strong> Cepat dan murah (Rp 2.500)</li>
+                    </ul>
+                    <p><strong>Jam Operasional:</strong> 24 jam (Real-time)</p>
+                `
+            },
+            setor: {
+                title: 'Setoran Tunai',
+                content: `
+                    <p>Setor tunai langsung di teller Bank Aceh atau melalui agen authorized.</p>
+                    <h3 style="color: #1a5f3f; margin: 20px 0 10px 0;">Cara Setor Tunai:</h3>
+                    <ul>
+                        <li>Datang ke teller dengan uang tunai</li>
+                        <li>Serahkan uang dan buku tabungan/kartu</li>
+                        <li>Isi formulir setoran tunai</li>
+                        <li>Tunggu proses (maksimal 5 menit)</li>
+                        <li>Terima bukti setor</li>
+                    </ul>
+                    <p><strong>Biaya Admin:</strong> Gratis</p>
+                `
+            },
+            cek: {
+                title: 'Cek Saldo',
+                content: `
+                    <p>Periksa saldo rekening Anda kapan saja dengan mudah.</p>
+                    <h3 style="color: #1a5f3f; margin: 20px 0 10px 0;">Cara Cek Saldo:</h3>
+                    <ul>
+                        <li><strong>Melalui ATM:</strong> Masuk > Tarik/Cek Saldo</li>
+                        <li><strong>Mobile Banking:</strong> Buka aplikasi > Saldo</li>
+                        <li><strong>Teller:</strong> Tanyakan kepada petugas</li>
+                        <li><strong>Internet Banking:</strong> Login ke website</li>
+                    </ul>
+                    <p><strong>Gratis tanpa biaya</strong></p>
+                `
+            },
+            bayar: {
+                title: 'Pembayaran',
+                content: `
+                    <p>Lakukan pembayaran berbagai tagihan dengan mudah dan aman.</p>
+                    <h3 style="color: #1a5f3f; margin: 20px 0 10px 0;">Jenis Pembayaran:</h3>
+                    <ul>
+                        <li>Listrik (PLN)</li>
+                        <li>Air Minum (PAM/PDAM)</li>
+                        <li>Telepon/Internet</li>
+                        <li>Angsuran Kredit</li>
+                        <li>Asuransi</li>
+                        <li>Tuition/Sekolah</li>
+                    </ul>
+                    <p><strong>Biaya Layanan:</strong> Minimal Rp 2.500</p>
+                `
+            },
+            barang: {
+                title: 'Lihat Barang',
+                content: `
+                    <p>Lihat katalog barang kebutuhan sekolah yang tersedia untuk pembelian.</p>
+                    <h3 style="color: #1a5f3f; margin: 20px 0 10px 0;">Produk Tersedia:</h3>
+                    <ul>
+                        <li><strong>Buku Tulis:</strong> Rp 15.000 - Rp 25.000</li>
+                        <li><strong>Seragam Sekolah:</strong> Rp 85.000 - Rp 120.000</li>
+                        <li><strong>Alat Tulis Set:</strong> Rp 35.000 - Rp 50.000</li>
+                        <li><strong>Buku Paket:</strong> Rp 45.000 - Rp 75.000</li>
+                        <li><strong>Sepatu Sekolah:</strong> Rp 95.000 - Rp 150.000</li>
+                    </ul>
+                    <p><strong>Pengiriman:</strong> Sesuai lokasi agen</p>
+                `
+            },
+            lainnya: {
+                title: 'Menu Lainnya',
+                content: `
+                    <p>Akses menu tambahan dan fitur spesial.</p>
+                    <h3 style="color: #1a5f3f; margin: 20px 0 10px 0;">Fitur Tersedia:</h3>
+                    <ul>
+                        <li>Ganti PIN/Password</li>
+                        <li>Lihat Riwayat Transaksi</li>
+                        <li>Ubah Data Profil</li>
+                        <li>Laporan Keluhan</li>
+                        <li>Panduan Pengguna</li>
+                        <li>Pusat Bantuan 24/7</li>
+                    </ul>
+                    <p><strong>Hubungi:</strong> Call Center 1500029</p>
+                `
+            },
+            topup: {
+                title: 'Topup Saldo',
+                content: `
+                    <p>Isi ulang saldo agen untuk melayani transaksi nasabah.</p>
+                    <h3 style="color: #1a5f3f; margin: 20px 0 10px 0;">Cara Topup:</h3>
+                    <ul>
+                        <li>Siapkan rekening bank aktif</li>
+                        <li>Hubungi supervisor/branch manager</li>
+                        <li>Tentukan jumlah topup</li>
+                        <li>Lakukan transfer sesuai instruksi</li>
+                        <li>Saldo akan masuk dalam 1-2 jam</li>
+                    </ul>
+                    <p><strong>Minimum Topup:</strong> Rp 1.000.000</p>
+                `
+            },
+            favorit: {
+                title: 'Akses Favorit',
+                content: `
+                    <p>Simpan transaksi favorit untuk akses cepat di lain waktu.</p>
+                    <h3 style="color: #1a5f3f; margin: 20px 0 10px 0;">Cara Menggunakan:</h3>
+                    <ul>
+                        <li>Lakukan transaksi yang sering Anda gunakan</li>
+                        <li>Klik tombol "Tambah ke Favorit"</li>
+                        <li>Nama akan tersimpan otomatis</li>
+                        <li>Akses cepat dari menu Favorit</li>
+                    </ul>
+                    <p><strong>Keamanan:</strong> Data terlindunsi dengan enkripsi</p>
+                `
+            },
+            cetak: {
+                title: 'Cetak Resi',
+                content: `
+                    <p>Cetak bukti transaksi untuk dokumentasi dan keperluan administrasi.</p>
+                    <h3 style="color: #1a5f3f; margin: 20px 0 10px 0;">Informasi Resi:</h3>
+                    <ul>
+                        <li>Nomor Referensi Transaksi</li>
+                        <li>Tanggal dan Waktu Transaksi</li>
+                        <li>Jenis Transaksi</li>
+                        <li>Jumlah Dana</li>
+                        <li>Status Transaksi</li>
+                    </ul>
+                    <p><strong>Format:</strong> Thermal/Thermal Roll</p>
+                `
+            },
+            bansos: {
+                title: 'Pencairan Dana Bansos',
+                content: `
+                    <p>Proses pencairan dana bansos siswa melalui agen authorized.</p>
+                    <h3 style="color: #1a5f3f; margin: 20px 0 10px 0;">Prosedur Pencairan:</h3>
+                    <ul>
+                        <li>Siswa/orang tua datang dengan identitas</li>
+                        <li>Verifikasi data di sistem ActionLink</li>
+                        <li>Input OTP yang dikirim ke nomor terdaftar</li>
+                        <li>Maksimal tarik 50% dari total dana</li>
+                        <li>Sisanya dapat dibelanjakan barang di agen</li>
+                    </ul>
+                    <p><strong>Dana Tersedia:</strong> Rp 250.000 per bulan per siswa</p>
+                    <p><strong>Periode:</strong> Setiap bulan (1-30)</p>
+                `
+            }
+        };
+
+        function openModal(type) {
+            const modal = document.getElementById('modal');
+            const title = document.getElementById('modal-title');
+            const body = document.getElementById('modal-body');
+            
+            if (modalContents[type]) {
+                title.textContent = modalContents[type].title;
+                body.innerHTML = modalContents[type].content;
+                modal.classList.add('active');
+            }
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('modal');
+            modal.classList.remove('active');
+        }
+
+        // Close modal when clicking overlay
+        document.getElementById('modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // Prevent default link behavior
+        document.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                if (this.getAttribute('onclick')) {
+                    e.preventDefault();
+                }
+            });
+        });
+
+        // Global transaction state
+        let transactionData = {};
+
+        // Figma Mockup Screens Handler
+        function showMockupScreen(screenName) {
+            const modal = document.getElementById('modal');
+            const title = document.getElementById('modal-title');
+            const body = document.getElementById('modal-body');
+
+            const mockupScreens = {
+                'bansos-pilihan': {
+                    title: 'Menu Bansos',
+                    content: `
+                        <div style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+                            <!-- Header -->
+                            <div style="background: linear-gradient(135deg, #1a5f3f 0%, #2d8659 100%); color: white; padding: 20px; text-align: center;">
+                                <h2 style="margin: 0;">Pencairan Dana Bansos</h2>
+                            </div>
+
+                            <!-- Content -->
+                            <div style="padding: 30px 20px; text-align: center;">
+                                <p style="color: #666; margin-bottom: 30px;">Pilih jenis transaksi yang ingin Anda lakukan</p>
+
+                                <!-- Button Penarikan Tunai -->
+                                <button onclick="showMockupScreen('penarikan-form')" style="width: 100%; padding: 20px; background: linear-gradient(135deg, #1a5f3f 0%, #2d8659 100%); color: white; border: none; border-radius: 12px; font-size: 1.1rem; font-weight: bold; cursor: pointer; margin-bottom: 15px; transition: all 0.3s;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+                                    <i class="fas fa-money-bill-wave" style="margin-right: 10px;"></i>Penarikan Tunai
+                                </button>
+
+                                <!-- Button Pembelian Barang -->
+                                <button onclick="showMockupScreen('pembelian-pilihan')" style="width: 100%; padding: 20px; background: linear-gradient(135deg, #ff8a3d 0%, #ff6b35 100%); color: white; border: none; border-radius: 12px; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: all 0.3s;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+                                    <i class="fas fa-shopping-bag" style="margin-right: 10px;"></i>Pembelian Barang Sekolah
+                                </button>
+
+                                <button onclick="closeModal()" style="width: 100%; padding: 12px; background: white; color: #1a5f3f; border: 2px solid #1a5f3f; border-radius: 8px; font-weight: bold; cursor: pointer; margin-top: 20px;">TUTUP</button>
+                            </div>
+                        </div>
+                    `
+                },
+
+                'penarikan-form': {
+                    title: 'Penarikan Tunai',
+                    content: `
+                        <div style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+                            <!-- Header -->
+                            <div style="background: linear-gradient(135deg, #1a5f3f 0%, #2d8659 100%); color: white; padding: 20px; text-align: center;">
+                                <h2 style="margin: 0;">Penarikan Tunai</h2>
+                            </div>
+
+                            <!-- Card -->
+                            <div style="background: linear-gradient(135deg, #1a5f3f 0%, #2d8659 100%); color: white; padding: 20px; margin: 15px;">
+                                <div style="font-size: 0.9rem; color: #fff; margin-bottom: 10px;">SALDO TERSEDIA</div>
+                                <div style="font-size: 2rem; font-weight: bold; margin-bottom: 15px;">Rp 1.500.000</div>
+                                <div style="font-size: 0.85rem;">Nama: Ahmad Fajarudin</div>
+                                <div style="font-size: 0.9rem; font-weight: bold;">KTP: 1103082001000100040</div>
+                            </div>
+
+                            <!-- Form Fields -->
+                            <div style="padding: 20px;">
+                                <div style="margin-bottom: 15px;">
+                                    <label style="display: block; color: #666; margin-bottom: 8px; font-weight: 600;">Nama Lengkap <span style="color: red;">*</span></label>
+                                    <input type="text" id="nama-penarikan" placeholder="Masukkan nama lengkap" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 6px; font-size: 0.9rem;">
+                                </div>
+
+                                <div style="margin-bottom: 15px;">
+                                    <label style="display: block; color: #666; margin-bottom: 8px; font-weight: 600;">No. KTP <span style="color: red;">*</span></label>
+                                    <input type="text" id="ktp-penarikan" placeholder="Masukkan nomor KTP" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 6px; font-size: 0.9rem;">
+                                </div>
+
+                                <div style="margin-bottom: 15px;">
+                                    <label style="display: block; color: #666; margin-bottom: 8px; font-weight: 600;">Alamat <span style="color: red;">*</span></label>
+                                    <input type="text" id="alamat-penarikan" placeholder="Masukkan alamat lengkap" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 6px; font-size: 0.9rem;">
+                                </div>
+
+                                <div style="margin-bottom: 15px;">
+                                    <label style="display: block; color: #666; margin-bottom: 8px; font-weight: 600;">No. HP Orang Tua <span style="color: red;">*</span></label>
+                                    <input type="text" id="hp-orang-tua" placeholder="Masukkan nomor HP" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 6px; font-size: 0.9rem;">
+                                </div>
+
+                                <div style="margin-bottom: 20px;">
+                                    <label style="display: block; color: #666; margin-bottom: 8px; font-weight: 600;">Nominal Penarikan <span style="color: red;">*</span></label>
+                                    <input type="text" id="nominal-penarikan" placeholder="Contoh: 500000" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 6px; font-size: 0.9rem;">
+                                    <small style="color: #999;">Maksimal: Rp 1.500.000</small>
+                                </div>
+
+                                <div style="display: flex; gap: 10px;">
+                                    <button onclick="showMockupScreen('bansos-pilihan')" style="flex: 1; padding: 12px; background: white; color: #1a5f3f; border: 2px solid #1a5f3f; border-radius: 8px; font-weight: bold; cursor: pointer;">KEMBALI</button>
+                                    <button onclick="saveTransaction('penarikan'); showMockupScreen('konfirmasi-otp')" style="flex: 1; padding: 12px; background: #1a5f3f; color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer;">LANJUT</button>
+                                </div>
+                            </div>
+                        </div>
+                    `
+                },
+
+                'pembelian-pilihan': {
+                    title: 'Pembelian Barang Sekolah',
+                    content: `
+                        <div style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+                            <!-- Header -->
+                            <div style="background: linear-gradient(135deg, #ff8a3d 0%, #ff6b35 100%); color: white; padding: 20px; text-align: center;">
+                                <h2 style="margin: 0;">Pembelian Barang Sekolah</h2>
+                            </div>
+
+                            <!-- Card -->
+                            <div style="background: linear-gradient(135deg, #ff8a3d 0%, #ff6b35 100%); color: white; padding: 20px; margin: 15px;">
+                                <div style="font-size: 0.9rem; color: #fff; margin-bottom: 10px;">SALDO TERSEDIA</div>
+                                <div style="font-size: 2rem; font-weight: bold; margin-bottom: 15px;">Rp 1.500.000</div>
+                                <div style="font-size: 0.85rem;">Nama: Ahmad Fajarudin</div>
+                                <div style="font-size: 0.9rem; font-weight: bold;">KTP: 1103082001000100040</div>
+                            </div>
+
+                            <!-- Form Fields -->
+                            <div style="padding: 20px;">
+                                <div style="margin-bottom: 15px;">
+                                    <label style="display: block; color: #666; margin-bottom: 8px; font-weight: 600;">Nama Siswa <span style="color: red;">*</span></label>
+                                    <input type="text" id="nama-pembelian" placeholder="Masukkan nama siswa" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 6px; font-size: 0.9rem;">
+                                </div>
+
+                                <div style="margin-bottom: 15px;">
+                                    <label style="display: block; color: #666; margin-bottom: 8px; font-weight: 600;">No. HP Orang Tua <span style="color: red;">*</span></label>
+                                    <input type="text" id="hp-pembelian" placeholder="Masukkan nomor HP" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 6px; font-size: 0.9rem;">
+                                </div>
+
+                                <div style="margin-bottom: 20px;">
+                                    <label style="display: block; color: #666; margin-bottom: 12px; font-weight: 600;">Pilih Barang <span style="color: red;">*</span></label>
+                                    
+                                    <div style="border: 1px solid #ddd; border-radius: 8px; padding: 15px; margin-bottom: 12px; background: #f9f9f9;">
+                                        <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+                                            <input type="checkbox" id="baju-sekolah" data-price="150000" onchange="updateTotal()" style="width: 18px; height: 18px; cursor: pointer;">
+                                            <span style="flex: 1;">
+                                                <strong>Baju Sekolah</strong><br>
+                                                <small style="color: #999;">Rp 150.000</small>
+                                            </span>
+                                        </label>
+                                    </div>
+
+                                    <div style="border: 1px solid #ddd; border-radius: 8px; padding: 15px; margin-bottom: 12px; background: #f9f9f9;">
+                                        <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+                                            <input type="checkbox" id="sepatu" data-price="120000" onchange="updateTotal()" style="width: 18px; height: 18px; cursor: pointer;">
+                                            <span style="flex: 1;">
+                                                <strong>Sepatu</strong><br>
+                                                <small style="color: #999;">Rp 120.000</small>
+                                            </span>
+                                        </label>
+                                    </div>
+
+                                    <div style="border: 1px solid #ddd; border-radius: 8px; padding: 15px; margin-bottom: 12px; background: #f9f9f9;">
+                                        <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+                                            <input type="checkbox" id="alat-tulis" data-price="100000" onchange="updateTotal()" style="width: 18px; height: 18px; cursor: pointer;">
+                                            <span style="flex: 1;">
+                                                <strong>Alat Tulis Lengkap</strong><br>
+                                                <small style="color: #999;">Rp 100.000</small>
+                                            </span>
+                                        </label>
+                                    </div>
+
+                                    <div style="border: 1px solid #ddd; border-radius: 8px; padding: 15px; background: #f9f9f9;">
+                                        <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+                                            <input type="checkbox" id="tas-sekolah" data-price="180000" onchange="updateTotal()" style="width: 18px; height: 18px; cursor: pointer;">
+                                            <span style="flex: 1;">
+                                                <strong>Tas Sekolah</strong><br>
+                                                <small style="color: #999;">Rp 180.000</small>
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <!-- Total -->
+                                <div style="background: #fff3e0; border: 2px solid #ff6b35; border-radius: 8px; padding: 15px; margin-bottom: 20px;">
+                                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                                        <span style="color: #666; font-weight: 600;">Total Belanja:</span>
+                                        <span id="total-belanja" style="color: #ff6b35; font-weight: bold; font-size: 1.3rem;">Rp 0</span>
+                                    </div>
+                                </div>
+
+                                <div style="display: flex; gap: 10px;">
+                                    <button onclick="showMockupScreen('bansos-pilihan')" style="flex: 1; padding: 12px; background: white; color: #ff6b35; border: 2px solid #ff6b35; border-radius: 8px; font-weight: bold; cursor: pointer;">KEMBALI</button>
+                                    <button onclick="saveTransaction('pembelian'); showMockupScreen('konfirmasi-otp')" style="flex: 1; padding: 12px; background: #ff6b35; color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer;">LANJUT</button>
+                                </div>
+                            </div>
+                        </div>
+                    `
+                },
+
+                'konfirmasi-otp': {
+                    title: 'Konfirmasi OTP',
+                    content: `
+                        <div style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+                            <!-- Header -->
+                            <div style="background: linear-gradient(135deg, #1a5f3f 0%, #2d8659 100%); color: white; padding: 30px 20px; text-align: center;">
+                                <h2 style="margin: 0 0 10px 0;">Konfirmasi OTP</h2>
+                                <p style="margin: 0; font-size: 0.9rem;">Kode OTP telah dikirim ke SMS orang tua</p>
+                            </div>
+
+                            <!-- Content -->
+                            <div style="padding: 30px 20px; text-align: center;">
+                                <p style="color: #666; margin-bottom: 20px; font-size: 0.95rem;">Masukkan kode OTP 6 digit yang telah dikirimkan</p>
+
+                                <!-- OTP Input -->
+                                <div style="display: flex; justify-content: center; gap: 8px; margin-bottom: 30px;">
+                                    ${[1,2,3,4,5,6].map(i => `
+                                        <input type="text" id="otp-${i}" maxlength="1" style="width: 45px; height: 45px; border: 2px solid #ddd; border-radius: 8px; text-align: center; font-size: 1.2rem; font-weight: bold; color: #1a5f3f;" 
+                                            onkeyup="moveToNext(event, ${i})"
+                                            onkeydown="handleBackspace(event, ${i})">
+                                    `).join('')}
+                                </div>
+
+                                <div style="background: #e8f5e9; border-left: 4px solid #1a5f3f; padding: 12px; border-radius: 6px; margin-bottom: 20px;">
+                                    <small style="color: #333;">💡 <strong>Catatan:</strong> SMS akan dikirim ke nomor orang tua yang terdaftar dalam sistem</small>
+                                </div>
+
+                                <div style="color: #999; margin-bottom: 20px;">
+                                    <small>Belum menerima OTP? <a href="javascript:void(0)" style="color: #1a5f3f; text-decoration: none; font-weight: bold;">Kirim Ulang</a></small>
+                                </div>
+
+                                <div style="display: flex; gap: 10px;">
+                                    <button onclick="showMockupScreen('bansos-pilihan')" style="flex: 1; padding: 12px; background: white; color: #1a5f3f; border: 2px solid #1a5f3f; border-radius: 8px; font-weight: bold; cursor: pointer;">BATAL</button>
+                                    <button onclick="verifyOTP()" style="flex: 1; padding: 12px; background: #1a5f3f; color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer;">VERIFIKASI</button>
+                                </div>
+                            </div>
+                        </div>
+                    `
+                },
+
+                'verifikasi-pin': {
+                    title: 'Verifikasi PIN ActionLink',
+                    content: `
+                        <div style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+                            <!-- Header -->
+                            <div style="background: linear-gradient(135deg, #1a5f3f 0%, #2d8659 100%); color: white; padding: 30px 20px; text-align: center;">
+                                <h2 style="margin: 0; margin-bottom: 5px;">PIN ActionLink</h2>
+                                <p style="margin: 0; font-size: 0.9rem;">Gunakan PIN transaksi yang sudah anda buat</p>
+                            </div>
+
+                            <!-- PIN Display -->
+                            <div style="padding: 30px 20px; text-align: center;">
+                                <div style="display: flex; justify-content: center; gap: 12px; margin-bottom: 40px;">
+                                    ${[1,2,3,4,5,6].map(i => `
+                                        <div id="pin-dot-${i}" style="width: 16px; height: 16px; background: #ccc; border-radius: 50%;"></div>
+                                    `).join('')}
+                                </div>
+
+                                <!-- Keypad -->
+                                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; max-width: 300px; margin: 0 auto; margin-bottom: 20px;">
+                                    ${[1,2,3,4,5,6,7,8,9].map(n => `
+                                        <button onclick="addPin('${n}')" style="padding: 20px; font-size: 1.5rem; color: #1a5f3f; font-weight: bold; border: 1px solid #ddd; border-radius: 8px; background: #f9f9f9; cursor: pointer; transition: all 0.2s;"
+                                            onmouseover="this.style.background='#e8e8e8'"
+                                            onmouseout="this.style.background='#f9f9f9'">
+                                            ${n}
+                                        </button>
+                                    `).join('')}
+                                </div>
+
+                                <!-- 0 and Clear buttons -->
+                                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; max-width: 300px; margin: 0 auto;">
+                                    <div></div>
+                                    <button onclick="addPin('0')" style="padding: 20px; font-size: 1.5rem; color: #1a5f3f; font-weight: bold; border: 1px solid #ddd; border-radius: 8px; background: #f9f9f9; cursor: pointer; transition: all 0.2s;"
+                                        onmouseover="this.style.background='#e8e8e8'"
+                                        onmouseout="this.style.background='#f9f9f9'">
+                                        0
+                                    </button>
+                                    <button onclick="clearPin()" style="padding: 20px; font-size: 1.2rem; background: #ff6b35; color: white; border: none; border-radius: 8px; cursor: pointer; transition: all 0.2s;"
+                                        onmouseover="this.style.background='#e55a24'"
+                                        onmouseout="this.style.background='#ff6b35'"
+                                        title="Hapus">
+                                        <i class="fas fa-backspace"></i>
+                                    </button>
+                                </div>
+
+                                <button onclick="verifyPin()" style="width: 100%; padding: 12px; background: #1a5f3f; color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; margin-top: 20px;">VERIFIKASI PIN</button>
+                            </div>
+                        </div>
+                    `
+                },
+
+                'transaksi-sukses': {
+                    title: 'Transaksi Berhasil',
+                    content: `
+                        <div style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+                            <!-- Header -->
+                            <div style="background: linear-gradient(135deg, #1a5f3f 0%, #2d8659 100%); color: white; padding: 20px; text-align: center;">
+                                <h2 style="margin: 0;">Transaksi Berhasil</h2>
+                            </div>
+
+                            <!-- Success Icon -->
+                            <div style="text-align: center; padding: 30px 20px;">
+                                <div style="width: 100px; height: 100px; background: #e8f5e9; border: 3px solid #1a5f3f; border-radius: 50%; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center;">
+                                    <i class="fas fa-check" style="font-size: 3rem; color: #1a5f3f;"></i>
+                                </div>
+                                <h3 style="color: #1a5f3f; margin: 0 0 10px 0; font-size: 1.3rem;">Pembayaran Berhasil Diproses</h3>
+                                <p style="color: #666; margin: 0;">Transaksi telah dikonfirmasi</p>
+                            </div>
+
+                            <!-- Details -->
+                            <div style="padding: 20px;">
+                                <div style="background: #f5f5f5; padding: 15px; border-radius: 8px; margin-bottom: 15px;">
+                                    <div style="color: #666; font-size: 0.85rem; margin-bottom: 8px;">Nomor Referensi</div>
+                                    <div style="color: #333; font-weight: bold; font-size: 1.1rem; margin-bottom: 15px; font-family: 'Courier New';">TXN${Date.now().toString().slice(-8)}</div>
+                                    
+                                    <div style="border-top: 1px solid #ddd; padding-top: 15px;">
+                                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                            <span style="color: #666;">Tanggal & Waktu:</span>
+                                            <span style="color: #333; font-weight: bold;">${new Date().toLocaleString('id-ID')}</span>
+                                        </div>
+                                        <div style="display: flex; justify-content: space-between;">
+                                            <span style="color: #666;">Jenis Transaksi:</span>
+                                            <span style="color: #333; font-weight: bold;" id="jenis-transaksi">Penarikan Tunai</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div style="background: #e8f5e9; border-left: 4px solid #1a5f3f; padding: 15px; border-radius: 6px; margin-bottom: 20px;">
+                                    <p style="margin: 0; color: #1a5f3f; font-weight: 600;"><i class="fas fa-info-circle"></i> Resi transaksi akan ditampilkan di halaman berikutnya</p>
+                                </div>
+
+                                <button onclick="showMockupScreen('resi-transaksi')" style="width: 100%; padding: 12px; background: #1a5f3f; color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; margin-bottom: 10px;">LIHAT RESI</button>
+                                <button onclick="closeModal()" style="width: 100%; padding: 12px; background: white; color: #1a5f3f; border: 2px solid #1a5f3f; border-radius: 8px; font-weight: bold; cursor: pointer;">TUTUP</button>
+                            </div>
+                        </div>
+                    `
+                },
+
+                'resi-transaksi': {
+                    title: 'Resi Transaksi',
+                    content: `
+                        <div style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+                            <!-- Header -->
+                            <div style="background: linear-gradient(135deg, #1a5f3f 0%, #2d8659 100%); color: white; padding: 20px; text-align: center;">
+                                <h2 style="margin: 0;">Resi Transaksi</h2>
+                            </div>
+
+                            <!-- Receipt Content -->
+                            <div style="padding: 20px; font-size: 0.9rem; max-height: 400px; overflow-y: auto;">
+                                <div style="text-align: center; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px dashed #ddd;">
+                                    <div style="font-weight: bold; color: #1a5f3f; margin-bottom: 5px;">BANK ACEH</div>
+                                    <div style="color: #666; font-size: 0.85rem;">Pencairan Dana Bansos Siswa</div>
+                                </div>
+
+                                <div style="background: #f5f5f5; padding: 12px; border-radius: 6px; margin-bottom: 15px;">
+                                    <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                        <span style="color: #666;">Nomor Referensi:</span>
+                                        <span style="font-weight: bold; font-family: 'Courier New';" id="resi-ref">TXN12345678</span>
+                                    </div>
+                                    <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                        <span style="color: #666;">Tanggal & Waktu:</span>
+                                        <span style="font-weight: bold;" id="resi-datetime">${new Date().toLocaleString('id-ID')}</span>
+                                    </div>
+                                    <div style="display: flex; justify-content: space-between;">
+                                        <span style="color: #666;">Jenis Transaksi:</span>
+                                        <span style="font-weight: bold;" id="resi-jenis">Penarikan Tunai</span>
+                                    </div>
+                                </div>
+
+                                <div style="background: #f5f5f5; padding: 12px; border-radius: 6px; margin-bottom: 15px;">
+                                    <div style="font-weight: bold; color: #1a5f3f; margin-bottom: 10px;">Detail Penerima</div>
+                                    <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+                                        <span style="color: #666;">Nama:</span>
+                                        <span style="font-weight: bold;" id="resi-nama">Ahmad</span>
+                                    </div>
+                                    <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+                                        <span style="color: #666;">No. KTP:</span>
+                                        <span style="font-weight: bold;" id="resi-ktp">1103082001000100040</span>
+                                    </div>
+                                    <div style="display: flex; justify-content: space-between;">
+                                        <span style="color: #666;">Alamat:</span>
+                                        <span style="font-weight: bold; text-align: right;" id="resi-alamat">Jln Makmur No. 32</span>
+                                    </div>
+                                </div>
+
+                                <div style="background: #f5f5f5; padding: 12px; border-radius: 6px; margin-bottom: 15px;">
+                                    <div style="font-weight: bold; color: #1a5f3f; margin-bottom: 10px;">Jumlah Transaksi</div>
+                                    <div style="display: flex; justify-content: space-between; padding-bottom: 10px; border-bottom: 1px solid #ddd;">
+                                        <span style="color: #666;">Nominal:</span>
+                                        <span style="font-weight: bold;" id="resi-nominal">Rp 500.000</span>
+                                    </div>
+                                    <div style="display: flex; justify-content: space-between; margin-top: 10px;">
+                                        <span style="color: #666;">Biaya Admin:</span>
+                                        <span style="font-weight: bold;">Rp 0</span>
+                                    </div>
+                                </div>
+
+                                <div style="background: #e8f5e9; border: 2px solid #1a5f3f; border-radius: 6px; padding: 15px; text-align: center;">
+                                    <div style="color: #666; font-size: 0.85rem; margin-bottom: 5px;">Total</div>
+                                    <div style="color: #1a5f3f; font-weight: bold; font-size: 1.3rem;" id="resi-total">Rp 500.000</div>
+                                </div>
+
+                                <div style="text-align: center; margin-top: 15px; padding-top: 15px; border-top: 2px dashed #ddd;">
+                                    <small style="color: #999;">Terima kasih telah menggunakan layanan Bank Aceh</small>
+                                </div>
+                            </div>
+
+                            <!-- Action Buttons -->
+                            <div style="padding: 20px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px;">
+                                <button style="padding: 10px; background: white; color: #1a5f3f; border: 1px solid #ddd; border-radius: 6px; cursor: pointer; font-size: 0.75rem; text-align: center;" title="Cetak">
+                                    <i class="fas fa-print" style="display: block; margin-bottom: 4px; font-size: 1.1rem;"></i>Cetak
+                                </button>
+                                <button style="padding: 10px; background: white; color: #1a5f3f; border: 1px solid #ddd; border-radius: 6px; cursor: pointer; font-size: 0.75rem; text-align: center;" title="Download">
+                                    <i class="fas fa-download" style="display: block; margin-bottom: 4px; font-size: 1.1rem;"></i>Download
+                                </button>
+                                <button style="padding: 10px; background: white; color: #1a5f3f; border: 1px solid #ddd; border-radius: 6px; cursor: pointer; font-size: 0.75rem; text-align: center;" title="Email">
+                                    <i class="fas fa-envelope" style="display: block; margin-bottom: 4px; font-size: 1.1rem;"></i>Email
+                                </button>
+                                <button onclick="closeModal()" style="padding: 10px; background: #1a5f3f; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 0.75rem; text-align: center;" title="Tutup">
+                                    <i class="fas fa-times" style="display: block; margin-bottom: 4px; font-size: 1.1rem;"></i>Tutup
+                                </button>
+                            </div>
+                        </div>
+                    `
+                }
+            };
+
+            if (mockupScreens[screenName]) {
+                title.innerHTML = mockupScreens[screenName].title;
+                body.innerHTML = mockupScreens[screenName].content;
+                modal.classList.add('active');
+            }
+        }
+
+        // Helper Functions for Transaction Flow
+        let currentPin = '';
+
+        function saveTransaction(type) {
+            transactionData.type = type;
+            
+            if (type === 'penarikan') {
+                transactionData.nama = document.getElementById('nama-penarikan')?.value || 'Ahmad';
+                transactionData.ktp = document.getElementById('ktp-penarikan')?.value || '1103082001000100040';
+                transactionData.alamat = document.getElementById('alamat-penarikan')?.value || 'Jln Makmur No. 32';
+                transactionData.nominal = document.getElementById('nominal-penarikan')?.value || '500000';
+                transactionData.jenis = 'Penarikan Tunai';
+            } else if (type === 'pembelian') {
+                transactionData.nama = document.getElementById('nama-pembelian')?.value || 'Ahmad';
+                transactionData.hp = document.getElementById('hp-pembelian')?.value || '081234567890';
+                transactionData.items = [];
+                transactionData.total = 0;
+                
+                // Collect selected items
+                ['baju-sekolah', 'sepatu', 'alat-tulis', 'tas-sekolah'].forEach(id => {
+                    const elem = document.getElementById(id);
+                    if (elem && elem.checked) {
+                        const price = parseInt(elem.dataset.price);
+                        const itemName = elem.parentElement.querySelector('strong').textContent;
+                        transactionData.items.push({name: itemName, price: price});
+                        transactionData.total += price;
+                    }
+                });
+                transactionData.jenis = 'Pembelian Barang';
+            }
+        }
+
+        function updateTotal() {
+            let total = 0;
+            ['baju-sekolah', 'sepatu', 'alat-tulis', 'tas-sekolah'].forEach(id => {
+                const elem = document.getElementById(id);
+                if (elem && elem.checked) {
+                    total += parseInt(elem.dataset.price);
+                }
+            });
+            
+            const rp = new Intl.NumberFormat('id-ID', {
+                style: 'currency',
+                currency: 'IDR',
+                minimumFractionDigits: 0
+            }).format(total);
+            
+            document.getElementById('total-belanja').textContent = rp;
+        }
+
+        function verifyOTP() {
+            const otpValues = [1,2,3,4,5,6].map(i => document.getElementById(`otp-${i}`)?.value || '').join('');
+            
+            if (otpValues.length !== 6 || otpValues.includes('')) {
+                alert('Masukkan OTP 6 digit dengan benar!');
+                return;
+            }
+            
+            if (otpValues === '123456') {
+                alert('✓ OTP berhasil diverifikasi!');
+                showMockupScreen('verifikasi-pin');
+            } else {
+                alert('✗ OTP salah. Coba lagi!');
+            }
+        }
+
+        function addPin(digit) {
+            if (currentPin.length < 6) {
+                currentPin += digit;
+                updatePinDisplay();
+            }
+        }
+
+        function clearPin() {
+            currentPin = currentPin.slice(0, -1);
+            updatePinDisplay();
+        }
+
+        function updatePinDisplay() {
+            [1,2,3,4,5,6].forEach((i) => {
+                const dot = document.getElementById(`pin-dot-${i}`);
+                if (dot) {
+                    dot.style.background = i <= currentPin.length ? '#1a5f3f' : '#ccc';
+                }
+            });
+        }
+
+        function verifyPin() {
+            if (currentPin.length !== 6) {
+                alert('Masukkan PIN 6 digit!');
+                return;
+            }
+            
+            if (currentPin === '123456') {
+                alert('✓ PIN berhasil diverifikasi!');
+                currentPin = '';
+                
+                // Update transaction details for success screen
+                if (transactionData.type === 'penarikan') {
+                    document.getElementById('jenis-transaksi').textContent = 'Penarikan Tunai';
+                    document.getElementById('resi-jenis').textContent = 'Penarikan Tunai';
+                    document.getElementById('resi-nominal').textContent = `Rp ${parseInt(transactionData.nominal).toLocaleString('id-ID')}`;
+                    document.getElementById('resi-total').textContent = `Rp ${parseInt(transactionData.nominal).toLocaleString('id-ID')}`;
+                } else {
+                    document.getElementById('jenis-transaksi').textContent = 'Pembelian Barang';
+                    document.getElementById('resi-jenis').textContent = 'Pembelian Barang';
+                    document.getElementById('resi-nominal').textContent = `Rp ${transactionData.total.toLocaleString('id-ID')}`;
+                    document.getElementById('resi-total').textContent = `Rp ${transactionData.total.toLocaleString('id-ID')}`;
+                }
+                
+                document.getElementById('resi-nama').textContent = transactionData.nama;
+                document.getElementById('resi-ktp').textContent = transactionData.ktp;
+                document.getElementById('resi-alamat').textContent = transactionData.alamat;
+                
+                showMockupScreen('transaksi-sukses');
+            } else {
+                alert('✗ PIN salah. Coba lagi!');
+                currentPin = '';
+                updatePinDisplay();
+            }
+        }
+
+        function moveToNext(event, current) {
+            const input = event.target;
+            if (input.value.length === 1 && current < 6) {
+                document.getElementById(`otp-${current + 1}`).focus();
+            }
+        }
+
+        function handleBackspace(event, current) {
+            if (event.key === 'Backspace' && event.target.value === '' && current > 1) {
+                document.getElementById(`otp-${current - 1}`).focus();
+            }
+        }
+
+        // Initialize mockup screen buttons
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add mockup buttons to menu
+            const menuItems = document.querySelectorAll('.menu-item');
+            if (menuItems.length > 0) {
+                const bansosFitur = Array.from(menuItems).find(item => 
+                    item.textContent.includes('Pencairan Dana') || item.textContent.includes('Bansos')
+                );
+                if (bansosFitur) {
+                    bansosFitur.onclick = () => showMockupScreen('bansos-pilihan');
+                }
+            }
+        });
+    </script>
+</body>
+</html>

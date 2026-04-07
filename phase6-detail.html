@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flowchart End-to-End Sistem Bansos Siswa Aceh</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-color: #219E05;
+            --secondary-color: #dad010;
+            --phase1-color: #4a6fa5;
+            --phase2-color: #166088;
+            --phase3-color: #009e4f;
+            --phase4-color: #ff6b35;
+            --phase5-color: #6a0572;
+            --light-color: #f8f9fa;
+            --dark-color: #343a40;
+            --gray-color: #6c757d;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        .header h1 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-size: 2.2rem;
+        }
+
+        .header p {
+            color: var(--gray-color);
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .flowchart-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            overflow: hidden;
+        }
+
+        /* Phase Styles */
+        .phase {
+            padding: 30px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .phase-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid;
+        }
+
+        .phase-number {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.5rem;
+            margin-right: 15px;
+        }
+
+        .phase-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+
+        .phase-subtitle {
+            color: var(--gray-color);
+            margin-top: 5px;
+            font-size: 1rem;
+        }
+
+        /* Process Steps */
+        .process-steps {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .step {
+            flex: 1;
+            min-width: 200px;
+            background: var(--light-color);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            position: relative;
+            border-left: 4px solid;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .step:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .step-number {
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .step-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--dark-color);
+        }
+
+        .step-description {
+            color: var(--gray-color);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* Connection Arrows */
+        .phase-connection {
+            text-align: center;
+            padding: 20px 0;
+            position: relative;
+        }
+
+        .arrow-down {
+            font-size: 2rem;
+            color: var(--primary-color);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-10px);}
+            60% {transform: translateY(-5px);}
+        }
+
+        /* Statistics */
+        .stats-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 40px 0;
+            padding: 30px;
+            background: linear-gradient(135deg, var(--primary-color), #004d7a);
+            border-radius: var(--border-radius);
+        }
+
+        .stat-item {
+            text-align: center;
+            color: white;
+            flex: 1;
+            min-width: 150px;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* Legend */
+        .legend {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 30px;
+            padding: 20px;
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+        }
+
+        /* Timeline */
+        .timeline {
+            margin-top: 40px;
+            padding: 30px;
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        .timeline-bar {
+            height: 10px;
+            background: #e9ecef;
+            border-radius: 5px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+
+        .timeline-progress {
+            height: 100%;
+            background: linear-gradient(to right, var(--phase1-color), var(--phase3-color), var(--primary-color));
+            width: 85%;
+            border-radius: 5px;
+            transition: width 1s ease;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .process-steps {
+                flex-direction: column;
+            }
+            
+            .step {
+                min-width: 100%;
+            }
+            
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .phase-title {
+                font-size: 1.4rem;
+            }
+        }
+        /* Additional mobile-first refinements */
+        .flowchart-container {
+            padding: 18px;
+        }
+
+        .step {
+            opacity: 0;
+            transform: translateY(10px);
+            transition: transform 0.35s ease, box-shadow 0.25s ease, opacity 0.35s ease;
+        }
+
+        /* Only apply hover effects on devices that support hover */
+        @media (hover: hover) and (pointer: fine) {
+            .step:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            }
+        }
+
+        /* Smaller phones */
+        @media (max-width: 480px) {
+            body { padding: 12px; }
+            .header { padding: 18px; }
+            .header h1 { font-size: 1.4rem; }
+            .header p { font-size: 0.95rem; }
+
+            .stats-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 12px;
+                padding: 18px;
+            }
+
+            .stat-item { min-width: 120px; }
+            .stat-number { font-size: 1.6rem; }
+
+            .process-steps { gap: 12px; }
+            .step { padding: 14px; border-left-width: 3px; }
+            .step-number { width: 28px; height: 28px; font-size: 0.8rem; top: -12px; left: -12px; }
+
+            .legend { padding: 12px; gap: 10px; }
+            .legend { flex-direction: column; align-items: center; }
+            .legend-item { font-size: 0.95rem; }
+
+            .timeline { padding: 18px; }
+            .timeline-bar { height: 10px; }
+            .timeline-progress { width: 100%; }
+
+            .phase-subtitle { font-size: 0.92rem; }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="header">
+        <h1><i class="fas fa-project-diagram"></i> Flowchart End-to-End Sistem Bansos Siswa Aceh</h1>
+        <p>Visualisasi lengkap alur sistem dari pendataan hingga monitoring untuk 180.000+ siswa di seluruh Aceh</p>
+    </div>
+
+    <!-- Statistics -->
+    <div class="stats-container">
+        <div class="stat-item">
+            <div class="stat-number">180.450</div>
+            <div class="stat-label">Total Siswa</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">174.320</div>
+            <div class="stat-label">Terverifikasi</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">Rp 436B</div>
+            <div class="stat-label">Dana Disalurkan</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">2.850</div>
+            <div class="stat-label">Agen Aktif</div>
+        </div>
+    </div>
+
+    <!-- Flowchart Container -->
+    <div class="flowchart-container">
+        
+        <!-- FASE 1 -->
+        <div class="phase">
+            <div class="phase-header" style="border-color: var(--phase3-color);">
+                <div class="phase-number" style="background: var(--phase3-color);">1</div>
+                <div>
+                    <div class="phase-title">Fase 1: Pembukaan Rekening & Penyaluran</div>
+                    <div class="phase-subtitle">Bank Aceh Menerima Data Siswa/i untuk dilakukan Pembukaan Rekening (Format xlsx, csv)</div>
+                </div>
+            </div>
+            
+            <div class="process-steps">
+                <div class="step" style="border-color: var(--phase3-color);">
+                    <div class="step-number" style="background: var(--phase3-color);">1</div>
+                    <div class="step-title">Verifikasi dan Validasi oleh Bank Aceh</div>
+                    <div class="step-description">Cek validasi data siswa dan rekening oleh Divisi TI (CIF sudah ada, data tidak diproses, verifikasi ke cabang pengelola)</div>
+                    <div style="margin-top: 10px;">
+                        <span style="background: #e6f2ff; color: var(--phase3-color); padding: 3px 8px; border-radius: 15px; font-size: 0.8rem;">
+                            <i class="fas fa-landmark"></i> Verification & Validation
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="step" style="border-color: var(--phase3-color);">
+                    <div class="step-number" style="background: var(--phase3-color);">2</div>
+                    <div class="step-title">Pembukaan Rekening</div>
+                    <div class="step-description">Pembuatan rekening massal otomatis untuk siswa</div>
+                    <div style="margin-top: 10px;">
+                        <span style="background: #e6f2ff; color: var(--phase3-color); padding: 3px 8px; border-radius: 15px; font-size: 0.8rem;">
+                            <i class="fas fa-robot"></i> Account Opening
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="step" style="border-color: var(--phase3-color);">
+                    <div class="step-number" style="background: var(--phase3-color);">3</div>
+                    <div class="step-title">KYC dan Distribusi Tabungan</div>
+                    <div class="step-description">Cabang Pengelola Melakukan KYC dan Distribusi Tabungan</div>
+                    <div style="margin-top: 10px;">
+                        <span style="background: #e6f2ff; color: var(--phase3-color); padding: 3px 8px; border-radius: 15px; font-size: 0.8rem;">
+                            <i class="fas fa-university"></i> KYC & Distribution
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="step" style="border-color: var(--phase3-color);">
+                    <div class="step-number" style="background: var(--phase3-color);">4</div>
+                    <div class="step-title">Distribusi Dana</div>
+                    <div class="step-description">Penyaluran dana @Rp 250.000 ke rekening siswa/bulan (Proses: APBA -> Bank Aceh -> Rekening Siswa/i)</div>
+                    <div style="margin-top: 10px;">
+                        <span style="background: #e6f2ff; color: var(--phase3-color); padding: 3px 8px; border-radius: 15px; font-size: 0.8rem;">
+                            <i class="fas fa-money-check-alt"></i> Fund Distribution
+                        </span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="phase-connection">
+                <div class="arrow-down">
+                    <i class="fas fa-arrow-down"></i>
+                </div>
+                <div style="color: var(--gray-color); font-size: 0.9rem; margin-top: 10px;">
+                    Rp 436B dana disalurkan → Lanjut ke transaksi
+                </div>
+            </div>
+        </div>
+
+        <!-- FASE 2 -->
+        <div class="phase">
+            <div class="phase-header" style="border-color: var(--phase4-color);">
+                <div class="phase-number" style="background: var(--phase4-color);">2</div>
+                <div>
+                    <div class="phase-title">Fase 2: Transaksi & Penarikan</div>
+                    <div class="phase-subtitle">Melalui Teller & Agen Laku Pandai Bank Aceh dengan sistem OTP</div>
+                </div>
+            </div>
+            
+            <div class="process-steps">
+                <div class="step" style="border-color: var(--phase4-color);">
+                    <div class="step-number" style="background: var(--phase4-color);">1</div>
+                    <div class="step-title">Akses ke Teller/Agen Laku Pandai</div>
+                    <div class="step-description">Orang tua/siswa datang ke Teller/Agen Laku Pandai terdekat</div>
+                    <div style="margin-top: 10px;">
+                        <span style="background: #e6f2ff; color: var(--phase4-color); padding: 3px 8px; border-radius: 15px; font-size: 0.8rem;">
+                            <i class="fas fa-store"></i> Teller/Agen Laku Pandai
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="step" style="border-color: var(--phase4-color);">
+                    <div class="step-number" style="background: var(--phase4-color);">2</div>
+                    <div class="step-title">Pilihan Transaksi</div>
+                    <div class="step-description">Memilih antara penarikan tunai atau pembelian barang</div>
+                    <div style="margin-top: 10px;">
+                        <span style="background: #e6f2ff; color: var(--phase4-color); padding: 3px 8px; border-radius: 15px; font-size: 0.8rem;">
+                            <i class="fas fa-exchange-alt"></i> Transaksi
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="step" style="border-color: var(--phase4-color);">
+                    <div class="step-number" style="background: var(--phase4-color);">3</div>
+                    <div class="step-title">Verifikasi OTP</div>
+                    <div class="step-description">Sistem mengirim OTP ke telepon orang tua</div>
+                    <div style="margin-top: 10px;">
+                        <span style="background: #e6f2ff; color: var(--phase4-color); padding: 3px 8px; border-radius: 15px; font-size: 0.8rem;">
+                            <i class="fas fa-mobile-alt"></i> SMS OTP
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="step" style="border-color: var(--phase4-color);">
+                    <div class="step-number" style="background: var(--phase4-color);">4</div>
+                    <div class="step-title">Transaksi Sukses</div>
+                    <div class="step-description">Transaksi selesai setelah input OTP valid</div>
+                    <div style="margin-top: 10px;">
+                        <span style="background: #e6f2ff; color: var(--phase4-color); padding: 3px 8px; border-radius: 15px; font-size: 0.8rem;">
+                            <i class="fas fa-check-circle"></i> Transaksi Sukses
+                        </span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="phase-connection">
+                <div class="arrow-down">
+                    <i class="fas fa-arrow-down"></i>
+                </div>
+                <div style="color: var(--gray-color); font-size: 0.9rem; margin-top: 10px;">
+                    2.850 agen aktif → Lanjut ke monitoring
+                </div>
+            </div>
+        </div>
+
+        <!-- FASE 3 -->
+        <div class="phase">
+            <div class="phase-header" style="border-color: var(--phase5-color);">
+                <div class="phase-number" style="background: var(--phase5-color);">3</div>
+                <div>
+                    <div class="phase-title">Fase 3: Monitoring & Pelaporan</div>
+                    <div class="phase-subtitle">Real-time dashboard dan sistem pelaporan terintegrasi</div>
+                </div>
+            </div>
+            
+            <div class="process-steps">
+                <div class="step" style="border-color: var(--phase5-color);">
+                    <div class="step-number" style="background: var(--phase5-color);">1</div>
+                    <div class="step-title">Dashboard Real-time</div>
+                    <div class="step-description">Monitoring data real-time melalui dashboard terpusat</div>
+                    <div style="margin-top: 10px;">
+                        <span style="background: #e6f2ff; color: var(--phase5-color); padding: 3px 8px; border-radius: 15px; font-size: 0.8rem;">
+                            <i class="fas fa-tachometer-alt"></i> Dashboard
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="step" style="border-color: var(--phase5-color);">
+                    <div class="step-number" style="background: var(--phase5-color);">2</div>
+                    <div class="step-title">Pelaporan Otomatis</div>
+                    <div class="step-description">Generate laporan harian, mingguan, dan bulanan</div>
+                    <div style="margin-top: 10px;">
+                        <span style="background: #e6f2ff; color: var(--phase5-color); padding: 3px 8px; border-radius: 15px; font-size: 0.8rem;">
+                            <i class="fas fa-file-alt"></i> Auto Report
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="step" style="border-color: var(--phase5-color);">
+                    <div class="step-number" style="background: var(--phase5-color);">3</div>
+                    <div class="step-title">Role-based Access</div>
+                    <div class="step-description">Akses berbeda untuk orang tua, sekolah, dinas, bank</div>
+                    <div style="margin-top: 10px;">
+                        <span style="background: #e6f2ff; color: var(--phase5-color); padding: 3px 8px; border-radius: 15px; font-size: 0.8rem;">
+                            <i class="fas fa-user-shield"></i> RBAC (role-based access control)
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="step" style="border-color: var(--phase5-color);">
+                    <div class="step-number" style="background: var(--phase5-color);">4</div>
+                    <div class="step-title">Analytics & Insights</div>
+                    <div class="step-description">Analisis data untuk evaluasi dan pengembangan sistem</div>
+                    <div style="margin-top: 10px;">
+                        <span style="background: #e6f2ff; color: var(--phase5-color); padding: 3px 8px; border-radius: 15px; font-size: 0.8rem;">
+                            <i class="fas fa-chart-line"></i> Analytics
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Timeline -->
+    <div class="timeline">
+        <h3 style="color: var(--primary-color); margin-bottom: 15px;">
+            <i class="fas fa-calendar-alt"></i> Timeline Implementasi Sistem
+        </h3>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+            <span>Progress Sistem:</span>
+            <span style="font-weight: bold; color: var(--primary-color);">85%</span>
+        </div>
+        <div class="timeline-bar">
+            <div class="timeline-progress"></div>
+        </div>
+        <div style="text-align: center; margin-top: 15px; color: var(--gray-color);">
+            <i class="fas fa-clock"></i> Deadline: 30 Desember 2025
+        </div>
+    </div>
+
+    <!-- Legend -->
+    <div class="legend">
+        <div class="legend-item">
+            <div class="legend-color" style="background: var(--phase1-color);"></div>
+            <span>Fase 1: Pendataan & Registrasi</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-color" style="background: var(--phase2-color);"></div>
+            <span>Fase 2: Verifikasi & Validasi</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-color" style="background: var(--phase3-color);"></div>
+            <span>Fase 3: Pembukaan Rekening & Penyaluran</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-color" style="background: var(--phase4-color);"></div>
+            <span>Fase 4: Transaksi & Penarikan</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-color" style="background: var(--phase5-color);"></div>
+            <span>Fase 5: Monitoring & Pelaporan</span>
+        </div>
+    </div>
+
+    <script>
+        // Animasi untuk timeline progress
+        document.addEventListener('DOMContentLoaded', function() {
+            const progressBar = document.querySelector('.timeline-progress');
+            
+            // Trigger animasi setelah halaman dimuat
+            setTimeout(() => {
+                progressBar.style.width = '85%';
+            }, 500);
+            
+            // Animasi untuk step cards
+            const steps = document.querySelectorAll('.step');
+            steps.forEach((step, index) => {
+                setTimeout(() => {
+                    step.style.opacity = '1';
+                    step.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+            
+            // Tambahkan interaksi hover pada phase headers
+            const phaseHeaders = document.querySelectorAll('.phase-header');
+            phaseHeaders.forEach(header => {
+                header.addEventListener('click', function() {
+                    const phaseNumber = this.querySelector('.phase-number').textContent;
+                    alert(`Anda mengklik Fase ${phaseNumber}. Untuk detail lengkap, buka dashboard utama.`);
+                });
+            });
+        });
+        
+        // Fungsi untuk menampilkan detail fase
+        function showPhaseDetail(phaseNumber) {
+            const phaseTitles = [
+                "Fase 1: Pendataan & Registrasi",
+                "Fase 2: Verifikasi & Validasi", 
+                "Fase 3: Pembukaan Rekening & Penyaluran",
+                "Fase 4: Transaksi & Penarikan",
+                "Fase 5: Monitoring & Pelaporan"
+            ];
+            
+            alert(`Detail ${phaseTitles[phaseNumber-1]}:\n\nBuka dashboard utama untuk melihat informasi lengkap dan formulir.`);
+        }
+    </script>
+</body>
+</html>
