@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kartu Aceh Caroeng - Bank Aceh Syariah</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-color: #219E05;
+            --secondary-color: #FFD700;
+            --accent-color: #0066a0;
+            --dark-green: #004d7a;
+            --light-green: #e8f5e9;
+            --gold-color: #C5A028;
+            --bank-blue: #0a3d62;
+            --phase1-color: #4a6fa5;
+            --phase2-color: #166088;
+            --phase3-color: #009e4f;
+            --phase4-color: #ff6b35;
+            --light-color: #f8f9fa;
+            --dark-color: #343a40;
+            --gray-color: #6c757d;
+            --border-radius: 12px;
+            --box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+
+            body {
+                background: linear-gradient(135deg, #f0f7f0 0%, #e8f0fe 100%);
+                color: #333;
+                line-height: 1.6;
+                min-height: 100vh;
+                padding: 20px;
+            }
+
+            .container {
+                max-width: 1400px;
+                margin: 0 auto;
+            }
+
+            /* Header */
+            .header {
+                background: linear-gradient(135deg, var(--dark-green), var(--primary-color));
+                color: white;
+                padding: 2rem;
+                border-radius: var(--border-radius);
+                margin-bottom: 30px;
+                box-shadow: var(--box-shadow);
+                position: relative;
+                overflow: hidden;
+            }
+
+            .header::before {
+                content: '';
+                position: absolute;
+                top: -50%;
+                right: -10%;
+                width: 300px;
+                height: 300px;
+                background: rgba(255, 255, 255, 0.1);
+                border-radius: 50%;
+            }
+
+            .header::after {
+                content: '';
+                position: absolute;
+                bottom: -30%;
+                left: -5%;
+                width: 250px;
+                height: 250px;
+                background: rgba(255, 255, 255, 0.08);
+                border-radius: 50%;
+            }
+
+            .logo-section {
+                display: flex;
+                align-items: center;
+                gap: 20px;
+                position: relative;
+                z-index: 1;
+            }
+
+            .logo-icon {
+                width: 70px;
+                height: 70px;
+                background: rgba(255, 255, 255, 0.2);
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 2rem;
+                border: 2px solid rgba(255, 255, 255, 0.3);
+            }
+
+            .header h1 {
+                font-size: 2.2rem;
+                margin-bottom: 5px;
+                letter-spacing: 1px;
+            }
+
+            .header .subtitle {
+                font-size: 1rem;
+                opacity: 0.95;
+            }
+
+            .badge {
+                display: inline-block;
+                background: rgba(255, 255, 255, 0.2);
+                padding: 8px 16px;
+                border-radius: 50px;
+                font-size: 0.85rem;
+                margin-top: 15px;
+            }
+
+            /* Navigation Tabs */
+            .nav-tabs {
+                display: flex;
+                gap: 10px;
+                margin-bottom: 30px;
+                flex-wrap: wrap;
+                background: white;
+                padding: 10px 20px;
+                border-radius: 50px;
+                box-shadow: var(--box-shadow);
+            }
+
+            .nav-tab {
+                padding: 12px 24px;
+                background: transparent;
+                border: none;
+                border-radius: 40px;
+                cursor: pointer;
+                font-weight: 600;
+                color: var(--gray-color);
+                transition: var(--transition);
+                font-size: 0.95rem;
+            }
+
+            .nav-tab:hover {
+                background: #f0f0f0;
+            }
+
+            .nav-tab.active {
+                background: linear-gradient(135deg, var(--primary-color), var(--dark-green));
+                color: white;
+                box-shadow: 0 2px 8px rgba(0, 158, 79, 0.3);
+            }
+
+            /* Card Styles */
+            .card {
+                background: white;
+                border-radius: var(--border-radius);
+                padding: 30px;
+                margin-bottom: 30px;
+                box-shadow: var(--box-shadow);
+                transition: var(--transition);
+            }
+
+            .card:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+            }
+
+            .card-title {
+                font-size: 1.5rem;
+                color: var(--primary-color);
+                margin-bottom: 20px;
+                padding-bottom: 15px;
+                border-bottom: 3px solid var(--primary-color);
+                display: inline-block;
+            }
+
+            .card-title i {
+                margin-right: 10px;
+            }
+
+            .section-title {
+                font-size: 1.3rem;
+                color: var(--dark-green);
+                margin: 25px 0 15px 0;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+            /* Grid Layout */
+            .grid-2 {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 25px;
+            }
+
+            .grid-3 {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 25px;
+            }
+
+            .grid-4 {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 20px;
+            }
+
+            /* Benefit Cards */
+            .benefit-card {
+                background: linear-gradient(135deg, #f8f9fa, #fff);
+                border-radius: var(--border-radius);
+                padding: 25px;
+                text-align: center;
+                border: 1px solid #eee;
+                transition: var(--transition);
+            }
+
+            .benefit-card:hover {
+                transform: translateY(-5px);
+                border-color: var(--primary-color);
+            }
+
+            .benefit-icon {
+                width: 70px;
+                height: 70px;
+                background: linear-gradient(135deg, var(--primary-color), var(--dark-green));
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 0 auto 15px;
+                color: white;
+                font-size: 1.8rem;
+            }
+
+            .benefit-card h4 {
+                color: var(--dark-green);
+                margin-bottom: 10px;
+            }
+
+            .benefit-card p {
+                color: var(--gray-color);
+                font-size: 0.9rem;
+            }
+
+            /* Flow Process */
+            .flow-container {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                flex-wrap: wrap;
+                gap: 20px;
+                margin: 30px 0;
+            }
+
+            .flow-step {
+                flex: 1;
+                min-width: 180px;
+                text-align: center;
+                position: relative;
+            }
+
+            .flow-step:not(:last-child)::after {
+                content: '→';
+                position: absolute;
+                right: -20px;
+                top: 50%;
+                transform: translateY(-50%);
+                font-size: 1.5rem;
+                color: var(--primary-color);
+            }
+
+            .flow-number {
+                width: 50px;
+                height: 50px;
+                background: linear-gradient(135deg, var(--primary-color), var(--dark-green));
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 0 auto 15px;
+                color: white;
+                font-weight: bold;
+                font-size: 1.2rem;
+            }
+
+            .flow-step h4 {
+                color: var(--dark-green);
+                margin-bottom: 8px;
+            }
+
+            .flow-step p {
+                color: var(--gray-color);
+                font-size: 0.85rem;
+            }
+
+            /* Allocation Cards */
+            .allocation-card {
+                background: linear-gradient(135deg, var(--light-green), #fff);
+                border-radius: var(--border-radius);
+                padding: 25px;
+                text-align: center;
+                border-left: 5px solid;
+            }
+
+            .allocation-card.belanja {
+                border-left-color: var(--primary-color);
+            }
+
+            .allocation-card.tunai {
+                border-left-color: var(--phase4-color);
+            }
+
+            .allocation-percent {
+                font-size: 3rem;
+                font-weight: bold;
+                color: var(--primary-color);
+            }
+
+            .allocation-card.tunai .allocation-percent {
+                color: var(--phase4-color);
+            }
+
+            .allocation-label {
+                font-size: 1.2rem;
+                font-weight: 600;
+                margin: 10px 0;
+            }
+
+            .allocation-desc {
+                color: var(--gray-color);
+                font-size: 0.9rem;
+            }
+
+            /* Stats */
+            .stats-container {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 20px;
+                margin-bottom: 30px;
+            }
+
+            .stat-card {
+                background: white;
+                border-radius: var(--border-radius);
+                padding: 25px;
+                text-align: center;
+                box-shadow: var(--box-shadow);
+                border-top: 4px solid var(--primary-color);
+            }
+
+            .stat-number {
+                font-size: 2rem;
+                font-weight: bold;
+                color: var(--primary-color);
+            }
+
+            .stat-label {
+                color: var(--gray-color);
+                font-size: 0.85rem;
+                margin-top: 5px;
+            }
+
+            /* Info Box */
+            .info-box {
+                background: linear-gradient(135deg, #e8f5e9, #e3f2fd);
+                border-radius: var(--border-radius);
+                padding: 25px;
+                margin: 20px 0;
+                border-left: 5px solid var(--primary-color);
+            }
+
+            .info-box i {
+                color: var(--primary-color);
+                margin-right: 10px;
+            }
+
+            /* Timeline */
+            .timeline {
+                position: relative;
+                padding-left: 30px;
+            }
+
+            .timeline-item {
+                position: relative;
+                padding-bottom: 30px;
+                border-left: 3px solid var(--primary-color);
+                padding-left: 25px;
+                margin-left: 15px;
+            }
+
+            .timeline-item::before {
+                content: '';
+                position: absolute;
+                left: -9px;
+                top: 0;
+                width: 15px;
+                height: 15px;
+                border-radius: 50%;
+                background: var(--primary-color);
+            }
+
+            .timeline-title {
+                font-weight: bold;
+                color: var(--dark-green);
+                margin-bottom: 8px;
+            }
+
+            /* Table */
+            .table-responsive {
+                overflow-x: auto;
+            }
+
+            .table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+
+            .table th {
+                background: linear-gradient(135deg, var(--primary-color), var(--dark-green));
+                color: white;
+                padding: 12px;
+                text-align: left;
+            }
+
+            .table td {
+                padding: 12px;
+                border-bottom: 1px solid #eee;
+            }
+
+            .table tr:hover {
+                background: #f5f5f5;
+            }
+
+            /* Footer */
+            .footer {
+                background: var(--dark-color);
+                color: white;
+                padding: 30px;
+                border-radius: var(--border-radius);
+                text-align: center;
+                margin-top: 30px;
+            }
+
+            /* Responsive */
+            @media (max-width: 1024px) {
+                .stats-container {
+                    grid-template-columns: repeat(2, 1fr);
+                }
+                .grid-4 {
+                    grid-template-columns: repeat(2, 1fr);
+                }
+            }
+
+            @media (max-width: 768px) {
+                .grid-2, .grid-3, .grid-4 {
+                    grid-template-columns: 1fr;
+                }
+                .flow-step:not(:last-child)::after {
+                    content: '↓';
+                    right: 50%;
+                    top: auto;
+                    bottom: -25px;
+                    transform: translateX(50%);
+                }
+                .stats-container {
+                    grid-template-columns: 1fr;
+                }
+                .header h1 {
+                    font-size: 1.5rem;
+                }
+                .nav-tabs {
+                    border-radius: 20px;
+                    padding: 10px;
+                }
+                .nav-tab {
+                    padding: 8px 16px;
+                    font-size: 0.85rem;
+                }
+            }
+        </style>
+    </head>
+    <body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo-section">
+                <div class="logo-icon">
+                    <img src="images/logo.png" alt="Logo Bank Aceh" style="height:50px;">
+                </div>
+                <div>
+                    <h1>KARTU ACEH CAROENG</h1>
+                    <div class="subtitle">Kartu ATM untuk Penyaluran Bantuan Biaya Pendidikan Anak Yatim/Piatu</div>
+                    <div class="badge">
+                        <i class="fas fa-handshake"></i> Kerja Sama Dinas Pendidikan Aceh dengan PT. Bank Aceh Syariah
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tombol Kembali -->
+        <div style="padding:20px; display:flex; gap:10px;">
+
+            <!-- Dashboard -->
+            <a href="index.html" 
+                style="
+                text-decoration:none !important;
+                padding:10px 15px;
+                background-color:#007029;
+                color:white;
+                border-radius:5px;
+                display:inline-block;">
+                🏠 Dashboard Utama
+            </a>
+
+        </div>
+
+        <!-- Navigation Tabs -->
+        <div class="nav-tabs">
+            <button class="nav-tab active" data-tab="overview">
+                <i class="fas fa-info-circle"></i> Ikhtisar
+            </button>
+            <button class="nav-tab" data-tab="mechanism">
+                <i class="fas fa-cogs"></i> Mekanisme
+            </button>
+            <button class="nav-tab" data-tab="flow">
+                <i class="fas fa-project-diagram"></i> Alur Penggunaan
+            </button>
+            <button class="nav-tab" data-tab="benefits">
+                <i class="fas fa-chart-line"></i> Manfaat
+            </button>
+        </div>
+
+        <!-- Tab Content: Overview -->
+        <div id="tab-overview" class="tab-content active">
+            <!-- Statistik -->
+            <div class="stats-container">
+                <div class="stat-card">
+                    <div class="stat-number">90.000+</div>
+                    <div class="stat-label">Penerima Manfaat</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">23 Kab/Kota</div>
+                    <div class="stat-label">Seluruh Aceh</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">Rp 250M+</div>
+                    <div class="stat-label">Dana Bantuan</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">6.500+</div>
+                    <div class="stat-label">Merchant/Agen</div>
+                </div>
+            </div>
+
+            <!-- Pengertian -->
+            <div class="card">
+                <h2 class="card-title"><i class="fas fa-graduation-cap"></i> Pengertian Kartu Aceh Caroeng</h2>
+                <p style="margin-bottom: 15px; line-height: 1.8;">
+                    <strong>Kartu Aceh Caroeng</strong> adalah kartu Anjungan Tunai Mandiri (ATM) yang diterbitkan atas kerja sama antara 
+                    <strong>Dinas Pendidikan Aceh</strong> dengan <strong>PT. Bank Aceh Syariah</strong>, yang diperuntukkan khusus bagi penerima 
+                    Bantuan Biaya Pendidikan kepada Anak Yatim dan/atau Piatu di Provinsi Aceh.
+                </p>
+                <div class="info-box">
+                    <i class="fas fa-balance-scale"></i>
+                    <strong>Landasan Hukum:</strong> Kartu ini merupakan instrumen penyaluran bantuan dalam bentuk uang (sebagaimana Pasal 4 ayat (2) 
+                    Pergub Aceh Nomor 11 Tahun 2025) yang bersumber dari Dana Otonomi Khusus.
+                </div>
+                <p style="margin-top: 15px; line-height: 1.8;">
+                    Dengan kartu ini, Pemerintah Aceh mewujudkan sistem penyaluran yang lebih modern, transparan, dan akuntabel, serta sejalan dengan 
+                    komitmen menuju <strong>Zona Integritas Wilayah Bebas Korupsi (WBK)</strong> dan <strong>Wilayah Birokrasi Bersih dan Melayani (WBBM)</strong>.
+                </p>
+            </div>
+
+            <!-- Maksud dan Tujuan -->
+            <div class="grid-2">
+                <div class="card">
+                    <h2 class="card-title"><i class="fas fa-bullseye"></i> Maksud</h2>
+                    <p>Menyediakan sarana pembayaran elektronik yang aman dan efisien bagi anak yatim/piatu penerima bantuan biaya pendidikan, 
+                    sehingga bantuan dapat digunakan secara langsung sesuai kebutuhan pendidikan.</p>
+                </div>
+                <div class="card">
+                    <h2 class="card-title"><i class="fas fa-flag-checkered"></i> Tujuan</h2>
+                    <ul style="padding-left: 20px; margin-top: 10px;">
+                        <li>Meningkatkan efektivitas, akuntabilitas, dan transparansi penyaluran bantuan</li>
+                        <li>Memastikan bantuan tepat sasaran, tepat waktu, dan tepat jumlah</li>
+                        <li>Memudahkan penerima dalam mengakses dan menggunakan bantuan</li>
+                        <li>Mendukung visi dan misi Gubernur Aceh dalam meningkatkan kualitas SDM</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Komposisi Penggunaan -->
+            <div class="card">
+                <h2 class="card-title"><i class="fas fa-chart-pie"></i> Komposisi Penggunaan Dana</h2>
+                <div class="grid-2" style="margin-top: 20px;">
+                    <div class="allocation-card belanja">
+                        <div class="allocation-percent">60%</div>
+                        <div class="allocation-label">Belanja (Non Tunai)</div>
+                        <div class="allocation-desc">
+                            <i class="fas fa-shopping-bag"></i> Pembelian perlengkapan sekolah<br>
+                            <small>(buku, seragam, alat tulis)</small>
+                            <hr style="margin: 10px 0;">
+                            <i class="fas fa-qrcode"></i> Belanja di merchant QRIS atau Agen Laku Pandai
+                        </div>
+                    </div>
+                    <div class="allocation-card tunai">
+                        <div class="allocation-percent">40%</div>
+                        <div class="allocation-label">Tarik Tunai</div>
+                        <div class="allocation-desc">
+                            <i class="fas fa-money-bill-wave"></i> Penarikan uang tunai melalui ATM Bank Aceh<br>
+                            <hr style="margin: 10px 0;">
+                            <i class="fas fa-store"></i> Penarikan melalui Agen Laku Pandai
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Jenis Usaha Merchant -->
+            <div class="card">
+                <h2 class="card-title"><i class="fas fa-store"></i> Jenis Usaha yang Disarankan untuk Merchant/Agen</h2>
+                <div class="grid-4" style="margin-top: 20px;">
+                    <div class="benefit-card" style="padding: 15px;">
+                        <i class="fas fa-book" style="font-size: 2rem; color: var(--primary-color);"></i>
+                        <h4>Toko Alat Tulis & Buku</h4>
+                    </div>
+                    <div class="benefit-card" style="padding: 15px;">
+                        <i class="fas fa-school" style="font-size: 2rem; color: var(--primary-color);"></i>
+                        <h4>Koperasi Sekolah</h4>
+                    </div>
+                    <div class="benefit-card" style="padding: 15px;">
+                        <i class="fas fa-tshirt" style="font-size: 2rem; color: var(--primary-color);"></i>
+                        <h4>Toko Seragam Sekolah</h4>
+                    </div>
+                    <div class="benefit-card" style="padding: 15px;">
+                        <i class="fas fa-print" style="font-size: 2rem; color: var(--primary-color);"></i>
+                        <h4>Fotokopi & Jilid</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab Content: Mechanism -->
+        <div id="tab-mechanism" class="tab-content">
+            <!-- Mekanisme Penetapan Data Penerima -->
+            <div class="card">
+                <h2 class="card-title"><i class="fas fa-database"></i> Mekanisme Penetapan Data Penerima</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-title">1. Kriteria Penerima</div>
+                        <p>Anak yatim dan/atau piatu yang terdaftar sebagai peserta didik pada jenjang SD/MI, SMP/MTs, SMA/SMK/MA, dan SLB</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-title">2. Pendataan melalui SIBAY</div>
+                        <p>Pendataan dilakukan melalui Sistem Informasi Anak Yatim (SIBAY) pada laman <strong>sibay.id</strong> (Pasal 1 angka 15 Pergub Aceh 11/2025)</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-title">3. Verifikasi & Validasi</div>
+                        <p>Verifikasi dan validasi data dilakukan oleh Dinas Pendidikan Aceh dan Cabang Dinas Pendidikan Wilayah Kabupaten/Kota</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-title">4. Penetapan dengan Keputusan Gubernur</div>
+                        <p>Data final calon penerima ditetapkan dengan Keputusan Gubernur (Pasal 17 ayat (1)), kemudian diserahkan oleh Dinas Pendidikan Aceh kepada Bank Aceh sebagai dasar penerbitan Kartu Aceh Caroeng</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pendistribusian Kartu -->
+            <div class="card">
+                <h2 class="card-title"><i class="fas fa-truck"></i> Pendistribusian Kartu</h2>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Opsi</th>
+                                <th>Lokasi Distribusi</th>
+                                <th>Keterangan</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>1</strong></td>
+                                <td>Kantor Cabang Bank Aceh Syariah</td>
+                                <td>Penerima datang langsung ke bank dengan membawa dokumen identitas dan surat keterangan penerima</td>
+                            </tr>
+                            <tr>
+                                <td><strong>2</strong></td>
+                                <td>Kantor Cabang Dinas Pendidikan (Cabdin) Kabupaten/Kota</td>
+                                <td>Petugas bank bekerja sama dengan Cabdin melakukan distribusi kolektif, terutama untuk jenjang SD/MI yang memerlukan pendampingan</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="info-box" style="margin-top: 20px;">
+                    <i class="fas fa-info-circle"></i>
+                    <strong>Catatan:</strong> Distribusi akan disesuaikan dengan kondisi dan kesepakatan bersama.
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab Content: Flow -->
+        <div id="tab-flow" class="tab-content">
+            <!-- Skema Alur Penggunaan -->
+            <div class="card">
+                <h2 class="card-title"><i class="fas fa-project-diagram"></i> Skema Alur Penggunaan Kartu (Flow Proses)</h2>
+                
+                <div class="flow-container">
+                    <div class="flow-step">
+                        <div class="flow-number">1</div>
+                        <h4>Terima Kartu</h4>
+                        <p>Penerima mendapatkan Kartu Aceh Caroeng dari Bank Aceh atau Cabdin</p>
+                    </div>
+                    <div class="flow-step">
+                        <div class="flow-number">2</div>
+                        <h4>Aktivasi & Ganti PIN</h4>
+                        <p>Aktivasi kartu dan perubahan PIN di ATM Bank Aceh</p>
+                    </div>
+                    <div class="flow-step">
+                        <div class="flow-number">3</div>
+                        <h4>Pilih Transaksi</h4>
+                        <p>Memilih antara Belanja (60%) atau Tarik Tunai (40%)</p>
+                    </div>
+                    <div class="flow-step">
+                        <div class="flow-number">4</div>
+                        <h4>Transaksi Selesai</h4>
+                        <p>Dana berkurang sesuai transaksi, sistem mencatat riwayat</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Detail Alur Belanja -->
+            <div class="grid-2">
+                <div class="card">
+                    <h3 style="color: var(--primary-color); margin-bottom: 20px;">
+                        <i class="fas fa-shopping-cart"></i> Alur Belanja (60%)
+                    </h3>
+                    <div class="timeline" style="padding-left: 0;">
+                        <div class="timeline-item" style="border-left-color: var(--primary-color);">
+                            <div class="timeline-title">1. Pilih Merchant</div>
+                            <p>Penerima memilih merchant/agen yang telah bekerja sama dengan Bank Aceh (toko alat tulis, koperasi sekolah, dll)</p>
+                            <p>Merchant dan agent yang dapat menerima program subsidi, dapat dilihat pada web dan media sosial resmi Bank Aceh dan diberikan tanda pengenal khusus (spanduk)</p>
+                        </div>
+                        <div class="timeline-item" style="border-left-color: var(--primary-color);">
+                            <div class="timeline-title">2. Lakukan Pembayaran</div>
+                            <p>Lakukan pembayaran menggunakan Kartu Aceh Caroeng melalui EDC atau QRIS</p>
+                        </div>
+                        <div class="timeline-item" style="border-left-color: var(--primary-color);">
+                            <div class="timeline-title">3. Verifikasi OTP</div>
+                            <p>Sistem mengirim OTP ke nomor telepon orang tua/wali untuk verifikasi</p>
+                        </div>
+                        <div class="timeline-item" style="border-left-color: var(--primary-color);">
+                            <div class="timeline-title">4. Transaksi Sukses</div>
+                            <p>Dana terpotong secara otomatis, barang diterima</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3 style="color: var(--phase4-color); margin-bottom: 20px;">
+                        <i class="fas fa-money-bill-wave"></i> Alur Tarik Tunai (40%)
+                    </h3>
+                    <div class="timeline" style="padding-left: 0;">
+                        <div class="timeline-item" style="border-left-color: var(--phase4-color);">
+                            <div class="timeline-title">1. Kunjungi ATM/Agen</div>
+                            <p>Penerima mengunjungi ATM Bank Aceh atau Agen Laku Pandai terdekat</p>
+                        </div>
+                        <div class="timeline-item" style="border-left-color: var(--phase4-color);">
+                            <div class="timeline-title">2. Masukkan Kartu & PIN</div>
+                            <p>Masukkan kartu dan PIN yang telah diaktivasi</p>
+                        </div>
+                        <div class="timeline-item" style="border-left-color: var(--phase4-color);">
+                            <div class="timeline-title">3. Pilih Menu Tarik Tunai</div>
+                            <p>Pilih menu penarikan tunai dan masukkan jumlah (maks 40% dari total dana)</p>
+                        </div>
+                        <div class="timeline-item" style="border-left-color: var(--phase4-color);">
+                            <div class="timeline-title">4. Ambil Uang</div>
+                            <p>Uang keluar, transaksi selesai</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Info Penting -->
+            <div class="info-box">
+                <i class="fas fa-exclamation-triangle"></i>
+                <strong>Penting:</strong> Setiap transaksi, baik belanja maupun penarikan tunai, akan tercatat dalam sistem untuk memudahkan monitoring dan evaluasi oleh Dinas Pendidikan Aceh.
+            </div>
+        </div>
+
+        <!-- Tab Content: Benefits -->
+        <div id="tab-benefits" class="tab-content">
+            <div class="card">
+                <h2 class="card-title"><i class="fas fa-chart-line"></i> Manfaat bagi Pemangku Kepentingan</h2>
+                <div class="grid-3" style="margin-top: 20px;">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <h4>Dinas Pendidikan Aceh</h4>
+                        <p>✓ Meningkatkan transparansi dan akuntabilitas</p>
+                        <p>✓ Memudahkan monitoring dan evaluasi</p>
+                        <p>✓ Mendukung terwujudnya WBK/WBBM</p>
+                        <p>✓ Mendorong pertumbuhan UMKM baru</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fas fa-university"></i>
+                        </div>
+                        <h4>Bank Aceh Syariah</h4>
+                        <p>✓ Memperluas layanan perbankan syariah</p>
+                        <p>✓ Meningkatkan Dana Pihak Ketiga (DPK)</p>
+                        <p>✓ Meningkatkan jumlah nasabah dan transaksi</p>
+                        <p>✓ Memudahkan penyaluran pembiayaan KUR UMKM</p>
+                        <p>✓ Menjadi mitra strategis Pemerintah Aceh</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fas fa-child"></i>
+                        </div>
+                        <h4>Penerima Kartu (Anak Yatim/Piatu)</h4>
+                        <p>✓ Menerima bantuan secara langsung dan aman</p>
+                        <p>✓ Dapat berbelanja kebutuhan pendidikan</p>
+                        <p>✓ Memiliki rekening untuk literasi keuangan</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kesimpulan -->
+            <div class="card" style="background: linear-gradient(135deg, var(--light-green), #fff);">
+                <h2 class="card-title"><i class="fas fa-check-circle"></i> Kesimpulan</h2>
+                <p style="font-size: 1.1rem; line-height: 1.8;">
+                    Kartu Aceh Caroeng merupakan inovasi penyaluran bantuan biaya pendidikan yang transparan, akuntabel, dan berpihak pada 
+                    anak yatim/piatu. Dengan mekanisme <strong>60% belanja dan 40% tunai</strong>, kartu ini tidak hanya memastikan bantuan digunakan 
+                    sesuai kebutuhan pendidikan, tetapi juga mendorong digitalisasi ekonomi dan menciptakan ekosistem keuangan yang inklusif 
+                    bagi generasi muda Aceh.
+                </p>
+                <div style="margin-top: 25px; padding: 15px; background: rgba(33, 158, 5, 0.1); border-radius: 10px; text-align: center;">
+                    <i class="fas fa-quote-left" style="color: var(--primary-color); margin-right: 10px;"></i>
+                    <em>"Bersama Kartu Aceh Caroeng, Wujudkan Generasi Aceh yang Cerdas, Mandiri, dan Berdaya Saing"</em>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p><i class="fas fa-copyright"></i> 2025 - Dinas Pendidikan Aceh & PT. Bank Aceh Syariah</p>
+            <p style="margin-top: 10px; font-size: 0.85rem; opacity: 0.8;">
+                <i class="fas fa-info-circle"></i> Untuk informasi lebih lanjut, hubungi Call Center Bank Aceh di 1500-845
+            </p>
+        </div>
+    </div>
+
+<script>
+    // Tab Navigation
+    const tabs = document.querySelectorAll('.nav-tab');
+    const contents = document.querySelectorAll('.tab-content');
+
+    function activateTab(tabId) {
+        // Sembunyikan semua konten
+        contents.forEach(content => {
+            content.classList.remove('active');
+        });
+        
+        // Tampilkan konten yang dipilih
+        const activeContent = document.getElementById(`tab-${tabId}`);
+        if (activeContent) {
+            activeContent.classList.add('active');
+        }
+        
+        // Update active state pada tab
+        tabs.forEach(tab => {
+            tab.classList.remove('active');
+            if (tab.getAttribute('data-tab') === tabId) {
+                tab.classList.add('active');
+            }
+        });
+    }
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            const tabId = tab.getAttribute('data-tab');
+            activateTab(tabId);
+        });
+    });
+
+    // Animasi statistik
+    const statNumbers = document.querySelectorAll('.stat-number');
+    
+    function animateNumber(element, target) {
+        let current = 0;
+        const increment = target / 50;
+        const timer = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+                element.textContent = target.toLocaleString() + '+';
+                clearInterval(timer);
+            } else {
+                element.textContent = Math.floor(current).toLocaleString() + '+';
+            }
+        }, 40);
+    }
+
+    // Observer untuk animasi saat scroll
+    const observerOptions = {
+        threshold: 0.5,
+        rootMargin: '0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const elements = entry.target.querySelectorAll('.stat-number');
+                elements.forEach(el => {
+                    const text = el.textContent;
+                    const number = parseInt(text.replace(/[^0-9]/g, ''));
+                    if (!isNaN(number) && !el.hasAttribute('data-animated')) {
+                        el.setAttribute('data-animated', 'true');
+                        animateNumber(el, number);
+                    }
+                });
+            }
+        });
+    }, observerOptions);
+
+   
